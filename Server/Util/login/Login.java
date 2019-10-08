@@ -4,38 +4,38 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import DB.DAO; //dbì ‘ê·¼ê°ì²´ì¶”ê°€í•¨ <ì¤€ê·¼>
 
 import common.Receive;
 public class Login implements Runnable {           
-// »ç¿ëÀÚ°¡ Á¢¼ÓÇÏ¿© ·Î±×ÀÎ
+// ì‚¬ìš©ìê°€ ì ‘ì†í•˜ì—¬ ë¡œê·¸ì¸
 	private String Login_Receive_Data;
-	private String ID = "hjp";
-	private String PASS = "1234";
+//ì•„ì´ë”” íŒ¨ìŠ¤ì›Œë“œ ì‚­ì œí•¨<ì¤€ê·¼>
 	private Socket userInfo;
-//	¼ÒÄÏÀÌ ÇÊ¿äÇÒ ¼ö ÀÖ¾î¼­ ÀÏ´Ü ¹Ş¾Æ¿È
+//	ì†Œì¼“ì´ í•„ìš”í•  ìˆ˜ ìˆì–´ì„œ ì¼ë‹¨ ë°›ì•„ì˜´
 	private DataInputStream inData;
-// 	Receive¿¡ ÇÊ¿äÇÔ
+// 	Receiveì— í•„ìš”í•¨
 	private DataOutputStream outData;
-//	Send¿¡ ÇÊ¿äÇÔ
+//	Sendì— í•„ìš”í•¨
 	public Login(Socket userInfo) throws IOException {
-								//inData, outData Á¤ÀÇÇÏ´Âµ¥ ¹ß»ıÇÏ´Â ¿¹¿Ü 
+								//inData, outData ì •ì˜í•˜ëŠ”ë° ë°œìƒí•˜ëŠ” ì˜ˆì™¸ 
 		this.userInfo = userInfo;
-	// 	Å¬¶óÀÌ¾ğÆ®ÀÇ À¯Àú Á¤º¸ SocketÀ» ¹Ş¾Æ¿È
+	// 	í´ë¼ì´ì–¸íŠ¸ì˜ ìœ ì € ì •ë³´ Socketì„ ë°›ì•„ì˜´
 		this.inData = new DataInputStream(userInfo.getInputStream());
 		this.outData = new DataOutputStream(userInfo.getOutputStream());
 	}
 
 	public void run() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+		// TODO ìë™ ìƒì„±ëœ ë©”ì†Œë“œ ìŠ¤í…
 		while(true) {
 			Login_Receive_Data = Receive.ReceiveData(inData);
 			if(Login_Receive_Data.startsWith("System"))
-				break; // ·Î±×ÀÎÈ­¸é¿¡¼­ µÚ·Î°¡±â ½ÅÈ£°¡ ¿ÔÀ» ¶§
+				break; // ë¡œê·¸ì¸í™”ë©´ì—ì„œ ë’¤ë¡œê°€ê¸° ì‹ í˜¸ê°€ ì™”ì„ ë•Œ
 			else {
 			String[] words = Login_Receive_Data.split(":");
 			System.out.println(words[0]+words[1]);
-			if(words[0].equals(ID) && words[1].equals(PASS)) {
-				System.out.println("À¯Àú ·Î±×ÀÎ ¼º°ø");
+			if(DAO.getInstance().searchMember(words[0], words[1])) {//DAOëŠ” DBì ‘ê·¼ ê°ì²´ì¸ë° í´ë˜ìŠ¤ì•ˆì— static í´ë˜ìŠ¤ë¥¼ ë§Œë“¤ì–´ì„œ í•˜ë‚˜ì˜ ì¸ìŠ¤í„´íŠ¸ë¡œë§Œ ì ‘ê·¼ ê°€ëŠ¥í•˜ê²Œ í•¨<ì¤€ê·¼>
+				System.out.println("ìœ ì € ë¡œê·¸ì¸ ì„±ê³µ");
 				common.Send.send(outData, "LoginAccept");
 				
 			}
@@ -48,7 +48,7 @@ public class Login implements Runnable {
 		    outData.close();
 		    userInfo.close();
 		} catch (IOException e) {
-			// TODO ÀÚµ¿ »ı¼ºµÈ catch ºí·Ï
+			// TODO ìë™ ìƒì„±ëœ catch ë¸”ë¡
 			e.printStackTrace();
 		}
 	}
