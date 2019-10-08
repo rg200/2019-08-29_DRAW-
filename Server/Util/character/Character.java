@@ -10,13 +10,13 @@ public class Character{
 	private Socket chat;		// 채팅용 통신 소켓
 	private Socket roomInfo;	// 방 정보 최신화용 통신 소켓
 	
-	private int channel;		// 채널
+	private int channelNumber;		// 채널
 	private int roomNumber;		// 방번호
 	
-	public Character(String nickName,Socket userInfo, int channel){
+	public Character(String nickName,Socket userInfo, int channelNumber){
 		this.nickName = nickName;
 		this.userInfo = userInfo;
-		this.channel = channel;
+		this.channelNumber = channelNumber;
 		this.roomNumber = 0;
 		// 최초 유저는 방번호 0인 로비에 접속하게 된다.
 	}
@@ -53,11 +53,11 @@ public class Character{
 		this.roomNumber = roomNumber;
 	}
 	
-	public int getChannel() {
-		return channel;
+	public int getChannelNumber() {
+		return channelNumber;
 	}
 
-	public void setChannel(int channel) {
-		this.channel = channel;
+	public void setChannelNumber(int channelNumber) {
+		this.channelNumber = channelNumber;
 	}
 }

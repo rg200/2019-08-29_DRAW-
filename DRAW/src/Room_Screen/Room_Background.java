@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.Socket;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,6 +24,10 @@ public class Room_Background extends JPanel{
 	private JButton ROOM_BACKBUTTON = new JButton(ROOM_BACK);
 	private JButton ROOM_BUTTON = new JButton(ROOM_IN);
 	private Default_Frame DF;
+	
+	//네트워크 
+	private  Socket clientSocket = null;// 클라이언트 소켓
+	
 	public Room_Background(Default_Frame DF) {
 		this.DF = DF;
 		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// 크기 고정
@@ -77,7 +82,7 @@ public class Room_Background extends JPanel{
 			@Override
 			public void mousePressed(MouseEvent e) {
 				DF.getContentPane().removeAll();
-				DF.add(new Lobby_Background(DF));//Select_Background 패널 불러옴 
+				DF.add(new Lobby_Background(DF,clientSocket));//Select_Background 패널 불러옴 
 				DF.repaint();
 			}
 		});

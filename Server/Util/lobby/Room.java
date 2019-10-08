@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import character.GameCharacter;
 
-public class Room {
+public class Room  {
 	// 방 클래스 아직 미구현
 	private ArrayList<GameCharacter> clients = new ArrayList<GameCharacter>();
 //	방에서의 유저 목록
