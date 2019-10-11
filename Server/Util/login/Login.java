@@ -7,53 +7,57 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import character.GameCharacter;
+import common.Access;
 import common.Receive;
 import lobby.Channel;
 public class Login implements Runnable {           
-// »ç¿ëÀÚ°¡ Á¢¼ÓÇÏ¿© ·Î±×ÀÎ
-	private ServerSocket ChatServer; // Ã¤ÆÃ ¼­¹ö ¼ÒÄÏ
-	private ServerSocket RoomInfoServer; // ·ë Á¤º¸ ¼­¹ö ¼ÒÄÏ
+// ì‚¬ìš©ìê°€ ì ‘ì†í•˜ì—¬ ë¡œê·¸ì¸
+	private ServerSocket ChatServer; // ì±„íŒ… ì„œë²„ ì†Œì¼“
+	private ServerSocket RoomInfoServer; // ë£¸ ì •ë³´ ì„œë²„ ì†Œì¼“
 	
-	private Socket userInfo; // Ã³À½¿£ ·Î±×ÀÎ -> À¯Àú&Ä£±¸Á¤º¸ ¼ÒÄÏ
-	private Socket Chat; // Ã¤ÆÃ ¼ÒÄÏ
-	private Socket RoomInfo; // ·ëÁ¤º¸ ¼ÒÄÏ
+	private Socket userInfo; // ì²˜ìŒì—” ë¡œê·¸ì¸ -> ìœ ì €&ì¹œêµ¬ì •ë³´ ì†Œì¼“
+	private Socket Chat; // ì±„íŒ… ì†Œì¼“
+	private Socket RoomInfo; // ë£¸ì •ë³´ ì†Œì¼“
 	
-	private String Login_Receive_Data; // ·Î±×ÀÎÇÒ ¶§ ¹Ş¾Æ¿À´Â µ¥ÀÌÅÍ ÀúÀåÇÏ´Â ½ºÆ®¸µ
-	private String ID = "hjp"; //½ÃÇè¿ë ¾ÆÀÌµğ
-	private String PASS = "1234"; // ½ÃÇè¿ë ÆĞ½º¿öµå
+	private String Login_Receive_Data; // ë¡œê·¸ì¸í•  ë•Œ ë°›ì•„ì˜¤ëŠ” ë°ì´í„° ì €ì¥í•˜ëŠ” ìŠ¤íŠ¸ë§
+	private String ID = "hjp"; //ì‹œí—˜ìš© ì•„ì´ë””
+	private String PASS = "1234"; // ì‹œí—˜ìš© íŒ¨ìŠ¤ì›Œë“œ
 	
-//	¼ÒÄÏÀÌ ÇÊ¿äÇÒ ¼ö ÀÖ¾î¼­ ÀÏ´Ü ¹Ş¾Æ¿È
+//	ì†Œì¼“ì´ í•„ìš”í•  ìˆ˜ ìˆì–´ì„œ ì¼ë‹¨ ë°›ì•„ì˜´
 	private DataInputStream inData;
-// 	Receive¿¡ ÇÊ¿äÇÔ
+// 	Receiveì— í•„ìš”í•¨
 	private DataOutputStream outData;
-//	Send¿¡ ÇÊ¿äÇÔ
+//	Sendì— í•„ìš”í•¨
 	public Login(Socket userInfo) throws IOException {
-								//inData, outData Á¤ÀÇÇÏ´Âµ¥ ¹ß»ıÇÏ´Â ¿¹¿Ü 
+								//inData, outData ì •ì˜í•˜ëŠ”ë° ë°œìƒí•˜ëŠ” ì˜ˆì™¸ 
 		this.userInfo = userInfo;
-	// 	Å¬¶óÀÌ¾ğÆ®ÀÇ À¯Àú Á¤º¸ SocketÀ» ¹Ş¾Æ¿È
+	// 	í´ë¼ì´ì–¸íŠ¸ì˜ ìœ ì € ì •ë³´ Socketì„ ë°›ì•„ì˜´
 		this.inData = new DataInputStream(userInfo.getInputStream());
 		this.outData = new DataOutputStream(userInfo.getOutputStream());
 	}
 
 	public void run() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+		// TODO ìë™ ìƒì„±ëœ ë©”ì†Œë“œ ìŠ¤í…
 		while(true) {
 			Login_Receive_Data = Receive.ReceiveData(inData);
 			if(Login_Receive_Data.startsWith("System"))
-				break; // ·Î±×ÀÎÈ­¸é¿¡¼­ µÚ·Î°¡±â ½ÅÈ£°¡ ¿ÔÀ» ¶§
+				break; // ë¡œê·¸ì¸í™”ë©´ì—ì„œ ë’¤ë¡œê°€ê¸° ì‹ í˜¸ê°€ ì™”ì„ ë•Œ
 			else {
-			String[] words = Login_Receive_Data.split(":"); // ¾ÆÀÌµğ:ÆĞ½º¿öµå·Î ¿À´Â ¹®Àå Ã³¸®
-			System.out.println(words[0]+words[1]); //È®ÀÎ¿ë ³ªÁß¿¡ Áö¿ò
-			if(words[0].equals(ID) && words[1].equals(PASS)) { // ºñ±³
-				System.out.println("À¯Àú ·Î±×ÀÎ ¼º°ø");
+			String[] words = Login_Receive_Data.split(":"); // ì•„ì´ë””:íŒ¨ìŠ¤ì›Œë“œë¡œ ì˜¤ëŠ” ë¬¸ì¥ ì²˜ë¦¬
+			System.out.println(words[0]+words[1]); //í™•ì¸ìš© ë‚˜ì¤‘ì— ì§€ì›€
+			if(words[0].equals(ID) && words[1].equals(PASS)) { // ë¹„êµ
+				System.out.println("ìœ ì € ë¡œê·¸ì¸ ì„±ê³µ");
 				common.Send.send(outData, "LoginAccept");
 				
-				// ·Î±×ÀÎ ¼º°ø½Ã À¯Àú Á¤º¸¸¦ ´ã´Â Ä³¸¯ÅÍ °´Ã¼ & Ã¤³Î°´Ã¼ »ı¼º 
+				Access.startChat();
+				Access.startRoomInfo();
+				// Chat ì“°ë ˆë“œì™€ RoomInfo ì“°ë ˆë“œ ìƒì„±
+				
 				GameCharacter user = new GameCharacter(words[0], userInfo, 0); 
+				// ë¡œê·¸ì¸ ì„±ê³µì‹œ ìœ ì € ì •ë³´ë¥¼ ë‹´ëŠ” ìºë¦­í„° ê°ì²´ & ì±„ë„ê°ì²´ ìƒì„± 
+				
 				Channel ch = new Channel(user, 0);
-				
-				//Ã¤³ÎÀº ¿ø·¡ À¯Àú°¡ ¼±ÅÃÇØ¾ß ÇÏÁö¸¸, Áö±İ Ã¤³Î¼±ÅÃÀÌ ¾ø¾î¼­ µğÆúÆ®·Î 0 À» °¡Á®¿Â´Ù.
-				
+				//ì±„ë„ì€ ì›ë˜ ìœ ì €ê°€ ì„ íƒí•´ì•¼ í•˜ì§€ë§Œ, ì§€ê¸ˆ ì±„ë„ì„ íƒì´ ì—†ì–´ì„œ ë””í´íŠ¸ë¡œ 0 ì„ ê°€ì ¸ì˜¨ë‹¤.
 			}
 			else
 				common.Send.send(outData, "LoginFailed");
@@ -64,7 +68,7 @@ public class Login implements Runnable {
 		    outData.close();
 		    userInfo.close();
 		} catch (IOException e) {
-			// TODO ÀÚµ¿ »ı¼ºµÈ catch ºí·Ï
+			// TODO ìë™ ìƒì„±ëœ catch ë¸”ë¡
 			e.printStackTrace();
 		}
 	}
