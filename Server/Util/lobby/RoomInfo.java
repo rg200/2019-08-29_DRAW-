@@ -7,13 +7,13 @@ import java.net.Socket;
 
 public class RoomInfo implements Runnable {
 	private Socket roomInfo;
-//	¼ÒÄÏÀÌ ÇÊ¿äÇÒ ¼ö ÀÖ¾î¼­ ÀÏ´Ü ¹Ş¾Æ¿È
+//	ì†Œì¼“ì´ í•„ìš”í•  ìˆ˜ ìˆì–´ì„œ ì¼ë‹¨ ë°›ì•„ì˜´
 	private DataInputStream request;
-// 	Receive¿¡ ÇÊ¿äÇÔ
+// 	Receiveì— í•„ìš”í•¨
 	private DataOutputStream response;
 
 	public RoomInfo(Socket roomInfo) {
-		//Å¬¶óÀÌ¾ğÆ®ÀÇ À¯Àú Á¤º¸ SocketÀ» ¹Ş¾Æ¿È
+		//í´ë¼ì´ì–¸íŠ¸ì˜ ìœ ì € ì •ë³´ Socketì„ ë°›ì•„ì˜´
 		
 		try {
 			this.roomInfo = roomInfo;
@@ -25,6 +25,6 @@ public class RoomInfo implements Runnable {
 		}
 	}
 	public void run() {
-		System.out.println("·ë ÀÎÆ÷ ¾²·¹µå°¡ ¿­·È´Ù~");
+		System.out.println("ë£¸ ì¸í¬ ì“°ë ˆë“œê°€ ì—´ë ¸ë‹¤~");
 	}
 }
