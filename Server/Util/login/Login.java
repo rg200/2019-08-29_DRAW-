@@ -12,12 +12,7 @@ import common.Receive;
 import lobby.Channel;
 public class Login implements Runnable {           
 // 사용자가 접속하여 로그인
-	private ServerSocket ChatServer; // 채팅 서버 소켓
-	private ServerSocket RoomInfoServer; // 룸 정보 서버 소켓
-	
 	private Socket userInfo; // 처음엔 로그인 -> 유저&친구정보 소켓
-	private Socket Chat; // 채팅 소켓
-	private Socket RoomInfo; // 룸정보 소켓
 	
 	private String Login_Receive_Data; // 로그인할 때 받아오는 데이터 저장하는 스트링
 	private String ID = "hjp"; //시험용 아이디
