@@ -8,21 +8,21 @@ import java.net.Socket;
 public class Chat implements Runnable {
 
 	private Socket chat = null;
-//	¼ÒÄÏÀÌ ÇÊ¿äÇÒ ¼ö ÀÖ¾î¼­ ÀÏ´Ü ¹Ş¾Æ¿È
+//	ì†Œì¼“ì´ í•„ìš”í•  ìˆ˜ ìˆì–´ì„œ ì¼ë‹¨ ë°›ì•„ì˜´
 	private DataInputStream inChat = null;
-// 	Receive¿¡ ÇÊ¿äÇÔ
+// 	Receiveì— í•„ìš”í•¨
 	private DataOutputStream outChat = null;
 
 	public Chat(Socket chat) throws IOException {
-		// inData, outData Á¤ÀÇÇÏ´Âµ¥ ¹ß»ıÇÏ´Â ¿¹¿Ü
+		// inData, outData ì •ì˜í•˜ëŠ”ë° ë°œìƒí•˜ëŠ” ì˜ˆì™¸
 		this.chat = chat;
-		//Å¬¶óÀÌ¾ğÆ®ÀÇ À¯Àú Á¤º¸ SocketÀ» ¹Ş¾Æ¿È
+		//í´ë¼ì´ì–¸íŠ¸ì˜ ìœ ì € ì •ë³´ Socketì„ ë°›ì•„ì˜´
 		this.inChat = new DataInputStream(chat.getInputStream());
 		this.outChat = new DataOutputStream(chat.getOutputStream());
-		common.Send.send(outChat, "Á¢¼ÓÇÏ½Å°É È¯¿µÇÕ´Ï´Ù.");
+		common.Send.send(outChat, "ì ‘ì†í•˜ì‹ ê±¸ í™˜ì˜í•©ë‹ˆë‹¤.");
 	}
 
 	public void run() {
-		System.out.println("Ã¤ÆÃ ¾²·¹µå°¡ ¿­·È´Ù~");
+		System.out.println("ì±„íŒ… ì“°ë ˆë“œê°€ ì—´ë ¸ë‹¤~");
 	}
 }
