@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import character.GameCharacter;
 
 public class Room  {
-	// ¹æ Å¬·¡½º ¾ÆÁ÷ ¹Ì±¸Çö
+	// ë°© í´ë˜ìŠ¤ ì•„ì§ ë¯¸êµ¬í˜„
 	private ArrayList<GameCharacter> clients = new ArrayList<GameCharacter>();
-//	¹æ¿¡¼­ÀÇ À¯Àú ¸ñ·Ï
+//	ë°©ì—ì„œì˜ ìœ ì € ëª©ë¡
 	public Room(GameCharacter client) {
-//	¹æ »ı¼º½Ã À¯Àú Ãß°¡
+//	ë°© ìƒì„±ì‹œ ìœ ì € ì¶”ê°€
 		clients.add(client);
 	}
 	
 	public void addUser(GameCharacter client) {
-//	ÀÌ¹Ì ÀÖ´Â ¹æÀÏ °æ¿ì À¯Àú Ãß°¡ 
+//	ì´ë¯¸ ìˆëŠ” ë°©ì¼ ê²½ìš° ìœ ì € ì¶”ê°€ 
 		clients.add(client);
 	}
 }
