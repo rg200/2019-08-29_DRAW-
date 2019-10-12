@@ -7,7 +7,8 @@ public class MainServer {
 	public static void main(String[] args) {
 		
 		new Access();
-	//	Main �����忡�� ���� ����
+		
+	//	Main 서버온
 		
 	}
 }

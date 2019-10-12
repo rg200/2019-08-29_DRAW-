@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import common.Card;
 
 public class GameCharacter extends Character{
-	// ÀÎ°ÔÀÓ¿¡¼­ »ç¿ëÇÒ Charter
+	// ì¸ê²Œì„ì—ì„œ ì‚¬ìš©í•  Charter
 	
 	private String Job;	
-//	°ÔÀÓ¿¡¼­ »ç¿ëÇÒ Á÷¾÷ 
+//	ê²Œì„ì—ì„œ ì‚¬ìš©í•  ì§ì—… 
 	private int Hp;
-//	Ä³¸¯ÅÍÀÇ Hp
+//	ìºë¦­í„°ì˜ Hp
 	private ArrayList<Card> Card = new ArrayList<Card>();
-//	Ä³¸¯ÀÌ °¡Áö°í ÀÖ´Â Card	
+//	ìºë¦­ì´ ê°€ì§€ê³  ìˆëŠ” Card	
 	
 	public GameCharacter(String nickName, Socket userInfo,int channel) {
 		super(nickName, userInfo, channel);

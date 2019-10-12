@@ -8,35 +8,47 @@ import login.Login;
 
 
 public class Access {             
-// Client °¡ Server¿¡ ÃÖÃÊ·Î Á¢¼Ó
-	private ServerSocket ChatServer; // Ã¤ÆÃ ¼­¹ö ¼ÒÄÏ
-	private ServerSocket RoomInfoServer; // ·ë Á¤º¸ ¼­¹ö ¼ÒÄÏ
-	private ServerSocket Info;
+// Client ê°€ Serverì— ìµœì´ˆë¡œ ì ‘ì†
+	private static ServerSocket ChatServer; 	// ì±„íŒ… ì„œë²„ ì†Œì¼“
+	private static ServerSocket RoomInfoServer; // ë£¸ ì •ë³´ ì„œë²„ ì†Œì¼“
+	private static ServerSocket Info;			// ìœ ì € ì •ë³´ ì„œë²„ ì†Œì¼“
 	private Socket userInfo; 
-	private Socket Chat;
-	private Socket RoomInfo;
+	
 	public Access() {
 		
-			try {
-				Info = new ServerSocket(9000);
-				ChatServer = new ServerSocket(9001);
-				RoomInfoServer = new ServerSocket(9002);
-			// 	¼­¹ö¿Í Å¬¶óÀÌ¾ğÆ®°£ À¯Àú Á¤º¸ Port : 9000 
-				
-				while(true) {
-			//	ServerÀÇ Main ¾²·¹µå´Â ¹«ÇÑ ¹İº¹À» ÇÏ¿© Å¬¶óÀÌ¾ğÆ®ÀÇ Á¢¼ÓÀ» ±â´Ù¸² 
-					userInfo = Info.accept();
-					new Thread(new Login(userInfo)).start();
-					Chat = ChatServer.accept();
-					new Thread(new lobby.Chat(Chat)).start();
-					RoomInfo = RoomInfoServer.accept();
-					new Thread(new lobby.RoomInfo(RoomInfo)).start();
-				//	Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓÇÏ¸é ¼­¹ö¿¡¼­ÀÇ Å¬¶óÀÌ¾ğÆ® ¾²·¹µå¸¦ »ı¼ºÇØÁÜ
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			Info = new ServerSocket(9000);
+			ChatServer = new ServerSocket(9001);
+			RoomInfoServer = new ServerSocket(9002);
+		// 	ì„œë²„ì™€ í´ë¼ì´ì–¸íŠ¸ê°„ ìœ ì € ì •ë³´ Port : 9000 
+			
+			while(true) {
+		//	Serverì˜ Main ì“°ë ˆë“œëŠ” ë¬´í•œ ë°˜ë³µì„ í•˜ì—¬ í´ë¼ì´ì–¸íŠ¸ì˜ ì ‘ì†ì„ ê¸°ë‹¤ë¦¼ 
+				userInfo = Info.accept();
+				new Thread(new Login(userInfo)).start();
 			}
-		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
+	public static void startChat() {
+	//	Chatting ì“°ë ˆë“œ ìƒì„±
+		try {
+			Socket Chat = ChatServer.accept();
+			new Thread(new lobby.Chat(Chat)).start();
+		}catch (IOException e) {
+			System.out.println("ì±„íŒ… ì“°ë ˆë“œ ìƒì„±ë¶€ë¶„ì—ì„œ ì˜ˆì™¸ ë°œìƒ");
+		}
+	}
+	
+	public static void startRoomInfo() {
+	//	RoomInfo ì“°ë ˆë“œ ìƒì„±
+		try {
+			Socket RoomInfo = RoomInfoServer.accept();
+			new Thread(new lobby.RoomInfo(RoomInfo)).start();
+		} catch (IOException e) {
+			System.out.println("ë¡¬ì •ë³´ ì“°ë ˆë“œ ìƒì„±ë¶€ë¶„ì—ì„œ ì˜ˆì™¸ ë°œìƒ");
+		}
+	}
 }

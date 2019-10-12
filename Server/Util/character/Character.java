@@ -3,22 +3,22 @@ package character;
 import java.net.Socket;
 
 public class Character{	
-	// ½Ã½ºÅÛ ÀûÀÎ ºÎºĞ¿¡¼­ »ç¿ëµÇ´Â character
+	// ì‹œìŠ¤í…œ ì ì¸ ë¶€ë¶„ì—ì„œ ì‚¬ìš©ë˜ëŠ” character
 	
-	private String nickName;	// À¯ÀúÀÇ ´Ğ³×ÀÓ
-	private Socket userInfo; 	// ·Î±×ÀÎ, À¯ÀúÁ¤º¸µî Åë½Å ¼ÒÄÏ
-	private Socket chat;		// Ã¤ÆÃ¿ë Åë½Å ¼ÒÄÏ
-	private Socket roomInfo;	// ¹æ Á¤º¸ ÃÖ½ÅÈ­¿ë Åë½Å ¼ÒÄÏ
+	private String nickName;	// ìœ ì €ì˜ ë‹‰ë„¤ì„
+	private Socket userInfo; 	// ë¡œê·¸ì¸, ìœ ì €ì •ë³´ë“± í†µì‹  ì†Œì¼“
+	private Socket chat;		// ì±„íŒ…ìš© í†µì‹  ì†Œì¼“
+	private Socket roomInfo;	// ë°© ì •ë³´ ìµœì‹ í™”ìš© í†µì‹  ì†Œì¼“
 	
-	private int channelNumber;		// Ã¤³Î
-	private int roomNumber;		// ¹æ¹øÈ£
+	private int channelNumber;		// ì±„ë„
+	private int roomNumber;		// ë°©ë²ˆí˜¸
 	
 	public Character(String nickName,Socket userInfo, int channelNumber){
 		this.nickName = nickName;
 		this.userInfo = userInfo;
 		this.channelNumber = channelNumber;
 		this.roomNumber = 0;
-		// ÃÖÃÊ À¯Àú´Â ¹æ¹øÈ£ 0ÀÎ ·Îºñ¿¡ Á¢¼ÓÇÏ°Ô µÈ´Ù.
+		// ìµœì´ˆ ìœ ì €ëŠ” ë°©ë²ˆí˜¸ 0ì¸ ë¡œë¹„ì— ì ‘ì†í•˜ê²Œ ëœë‹¤.
 	}
 	
 	public String getNickName() {

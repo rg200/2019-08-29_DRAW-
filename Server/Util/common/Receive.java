@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 public class Receive {		
-// µ¥ÀÌÅÍ¸¦ ÀÔ·Â¹ŞÀ½
+// ë°ì´í„°ë¥¼ ì…ë ¥ë°›ìŒ
 	
 	public static String ReceiveData(DataInputStream inData)  {
 		try {
@@ -13,7 +13,7 @@ public class Receive {
 			
 			e.printStackTrace();
 			return "Error";
-		//	µ¥ÀÌÅÍ¸¦ Àü¼Û ¹Ş´Â ´Ü°è¿¡¼­ ¿¹¿Ü°¡ ¹ß»ıÇÏ¿´À» °æ¿ì Error ¹İÈ¯
+		//	ë°ì´í„°ë¥¼ ì „ì†¡ ë°›ëŠ” ë‹¨ê³„ì—ì„œ ì˜ˆì™¸ê°€ ë°œìƒí•˜ì˜€ì„ ê²½ìš° Error ë°˜í™˜
 		}
 	}
 }

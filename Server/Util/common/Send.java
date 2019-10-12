@@ -6,7 +6,7 @@ import java.io.IOException;
 import lobby.Room;
 
 public class Send {       
-// µ¥ÀÌÅÍ¸¦ Àü¼Û
+// ë°ì´í„°ë¥¼ ì „ì†¡
 	
 	public static void send(DataOutputStream outData,String Data) {
 		try {
@@ -18,10 +18,10 @@ public class Send {
 	}
 	
 	public static void sendAll(Room room) {
-//	·ë Å¬·¡½º ¹Ì±¸ÇöÀ¸·Î ÀÎÇÑ ´ë±â »óÅÂ	
+//	ë£¸ í´ë˜ìŠ¤ ë¯¸êµ¬í˜„ìœ¼ë¡œ ì¸í•œ ëŒ€ê¸° ìƒíƒœ	
 	}
 	
 	public static void whisper() {
-//	³»ºÎ ±â´É ¹Ì±¸ÇöÀ¸·Î ÀÎÇÑ ´ë±â »óÅÂ
+//	ë‚´ë¶€ ê¸°ëŠ¥ ë¯¸êµ¬í˜„ìœ¼ë¡œ ì¸í•œ ëŒ€ê¸° ìƒíƒœ
 	}
 }
