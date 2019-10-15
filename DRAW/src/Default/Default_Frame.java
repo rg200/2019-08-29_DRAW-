@@ -1,4 +1,4 @@
-package Default_Frame;
+package Default;
 
 
 import javax.swing.JFrame;

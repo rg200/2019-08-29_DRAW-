@@ -5,7 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Default_Frame.Default_Frame;
+import Default.Default_Frame;
 import Main_Screen.Main_Background;
 
 public class GameBaord_Background extends JPanel{
