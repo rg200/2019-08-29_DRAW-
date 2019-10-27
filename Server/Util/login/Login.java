@@ -50,15 +50,17 @@ public class Login implements Runnable {
 				System.out.println("유저 로그인 성공");
 				common.Send.sendData(outData, "LoginAccept");
 				
-				channel_Select = Receive.ReceiveInt(inData);
+				channel_Select = 0;
+				//channel_Select = Receive.ReceiveInt(inData);
 				//	채널 선택
 				
 				GameCharacter user = new GameCharacter(words[0], userInfo,Access.startChat(),Access.startRoomInfo(), channel_Select); 
 				// 로그인 성공시 유저 정보를 담는 캐릭터 객체 & 채널객체 생성 
 				
+				new Channel(user, channel_Select);
 				makeChat_RoomInfo(user,channel_Select);
 				
-				new Channel(user, channel_Select);
+				
 				//채널은 원래 유저가 선택해야 하지만, 지금 채널선택이 없어서 디폴트로 0 을 가져온다.
 			}
 			else

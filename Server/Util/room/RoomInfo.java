@@ -70,9 +70,9 @@ public class RoomInfo implements Runnable {
 		
 		Set<Integer> room = Channel.getRoom(channel).keySet();
 		Iterator<Integer> roomNum = room.iterator();
-		
+		System.out.println(roomNum);
 		while(roomNum.hasNext()) {
-			if(roomNum.equals(0)) {
+			if(roomNum.next().equals(0)) {
 				Send.sendInt(response, Room.roomNum-1);
 			}else {
 				Send.sendData(response, Channel.getRoom(channel).get(roomNum).getRoomName());

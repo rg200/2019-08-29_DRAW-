@@ -6,7 +6,7 @@ import java.io.IOException;
 import room.Room;
 
 public class Send {       
-// �����͸� ����
+// 전송
 	
 	public static void sendData(DataOutputStream outData,String data) {
 		try {
@@ -27,10 +27,10 @@ public class Send {
 	}
 	
 	public static void sendAll(Room room) {
-//	�� Ŭ���� �̱������� ���� ��� ����	
+//	평소 전달	
 	}
 	
 	public static void whisper() {
-//	���� ��� �̱������� ���� ��� ����
+//	귓속말 기능
 	}
 }
