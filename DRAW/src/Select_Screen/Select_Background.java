@@ -46,7 +46,6 @@ public class Select_Background extends JPanel {
 		
 	}
 	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
 		g.drawImage(Sel_Background, 0, 0, this.getWidth(),this.getHeight(),this);
 		
 		

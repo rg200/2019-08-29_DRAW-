@@ -21,7 +21,6 @@ public class GameBaord_Background extends JPanel{
 	}
 	public void paintComponent(Graphics g) {
 		g.drawImage(GameBaord_Background, 0, 0, this.getWidth(), this.getHeight(), this);
-		super.paintComponents(g);
 
 	}
 

@@ -38,7 +38,6 @@ public class Room_Background extends JPanel{
 	
 	public void paintComponent(Graphics g) {
 		g.drawImage(Rom_Background, 0, 0, this.getWidth(), this.getHeight(), this);
-		super.paintComponents(g);
 
 	}
 

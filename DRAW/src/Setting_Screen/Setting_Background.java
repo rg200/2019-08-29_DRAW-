@@ -34,7 +34,6 @@ public class Setting_Background extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
 		g.drawImage(Set_Background, 0, 0, getWidth(), getHeight(), this);
 		
 

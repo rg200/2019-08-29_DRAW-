@@ -56,7 +56,6 @@ public class Login_Background extends JPanel{
 	public void paintComponent(Graphics g) {
 
 		g.drawImage(Log_Background, 0, 0, this.getWidth(), this.getHeight(), this);
-		super.paintComponents(g);
 
 	}
 
