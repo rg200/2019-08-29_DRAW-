@@ -3,14 +3,23 @@ package common;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import lobby.Room;
+import room.Room;
 
 public class Send {       
-// 데이터를 전송
+// �����͸� ����
 	
-	public static void send(DataOutputStream outData,String Data) {
+	public static void sendData(DataOutputStream outData,String data) {
 		try {
-			outData.writeUTF(Data);
+			outData.writeUTF(data);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void sendInt(DataOutputStream outData,int data) {
+		try {
+			outData.writeInt(data);
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -18,10 +27,10 @@ public class Send {
 	}
 	
 	public static void sendAll(Room room) {
-//	룸 클래스 미구현으로 인한 대기 상태	
+//	�� Ŭ���� �̱������� ���� ��� ����	
 	}
 	
 	public static void whisper() {
-//	내부 기능 미구현으로 인한 대기 상태
+//	���� ��� �̱������� ���� ��� ����
 	}
 }

@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import common.Card;
 
 public class GameCharacter extends Character{
-	// 인게임에서 사용할 Charter
+	// 게임 캐릭터 클래스
 	
 	private String Job;	
-//	게임에서 사용할 직업 
+//	직업
 	private int Hp;
-//	캐릭터의 Hp
+//	체력
 	private ArrayList<Card> Card = new ArrayList<Card>();
-//	캐릭이 가지고 있는 Card	
+//	소지하고 있는 카드	
 	
-	public GameCharacter(String nickName, Socket userInfo,int channel) {
-		super(nickName, userInfo, channel);
+	public GameCharacter(String nickName, Socket userInfo,Socket chat, Socket roomInfo,int channel) {
+		super(nickName, userInfo, chat, roomInfo, channel);
 	}
 	
 	public String getJob() {

@@ -13,6 +13,8 @@ public class Login implements Runnable {
 // 사용자가 접속하여 로그인
 	private Socket userInfo; // 처음엔 로그인 -> 유저&친구정보 소켓
 	
+	private int channel_Select;
+	
 	private String Login_Receive_Data; // 로그인할 때 받아오는 데이터 저장하는 스트링
 	private String ID = "hjp"; //시험용 아이디
 	private String PASS = "1234"; // 시험용 패스워드
@@ -30,6 +32,11 @@ public class Login implements Runnable {
 		this.outData = new DataOutputStream(userInfo.getOutputStream());
 	}
 
+	public void makeChat_RoomInfo(GameCharacter user, int Channel) {
+		new Thread(new lobby.Chat(user.getChat())).start();
+		new Thread(new room.RoomInfo(user,Channel)).start();
+	}
+	
 	public void run() {
 		// TODO 자동 생성된 메소드 스텁
 		while(true) {
@@ -41,20 +48,21 @@ public class Login implements Runnable {
 			System.out.println(words[0]+words[1]); //확인용 나중에 지움
 			if(words[0].equals(ID) && words[1].equals(PASS)) { // 비교
 				System.out.println("유저 로그인 성공");
-				common.Send.send(outData, "LoginAccept");
+				common.Send.sendData(outData, "LoginAccept");
 				
-				Access.startChat();
-				Access.startRoomInfo();
-				// Chat 쓰레드와 RoomInfo 쓰레드 생성
+				channel_Select = Receive.ReceiveInt(inData);
+				//	채널 선택
 				
-				GameCharacter user = new GameCharacter(words[0], userInfo, 0); 
+				GameCharacter user = new GameCharacter(words[0], userInfo,Access.startChat(),Access.startRoomInfo(), channel_Select); 
 				// 로그인 성공시 유저 정보를 담는 캐릭터 객체 & 채널객체 생성 
 				
-				Channel ch = new Channel(user, 0);
+				makeChat_RoomInfo(user,channel_Select);
+				
+				new Channel(user, channel_Select);
 				//채널은 원래 유저가 선택해야 하지만, 지금 채널선택이 없어서 디폴트로 0 을 가져온다.
 			}
 			else
-				common.Send.send(outData, "LoginFailed");
+				common.Send.sendData(outData, "LoginFailed");
 			}
 		}
 		try {

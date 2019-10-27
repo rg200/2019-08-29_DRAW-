@@ -13,9 +13,11 @@ public class Character{
 	private int channelNumber;		// 채널
 	private int roomNumber;		// 방번호
 	
-	public Character(String nickName,Socket userInfo, int channelNumber){
+	public Character(String nickName,Socket userInfo,Socket chat, Socket roomInfo, int channelNumber){
 		this.nickName = nickName;
 		this.userInfo = userInfo;
+		this.chat = chat;
+		this.roomInfo = roomInfo;
 		this.channelNumber = channelNumber;
 		this.roomNumber = 0;
 		// 최초 유저는 방번호 0인 로비에 접속하게 된다.

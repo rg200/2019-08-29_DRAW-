@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import character.GameCharacter;
+import room.Room;
 
 public class Channel {		
 // Send 객체때문에 임의로 만들어둠 변경될 가능성 있음
@@ -25,12 +26,16 @@ public class Channel {
 	// 	비어 있지 않다면 0번방(로비)에 유저를 추가
 		}else {
 	//	비어 있다면
-			room = new Room(character);
+			room = new Room("lobby", character);
 			Rooms.put(0, room);
 			this.Channels.put(channelNumber, Rooms);
 			System.out.println("채널을 추가~");
 	//	0번 방을 만들어 Channels에 저장
 		}
+	}
+	
+	public static Map<Integer, Room> getRoom(int channel) {
+		return Channels.get(channel);
 	}
 	
 }

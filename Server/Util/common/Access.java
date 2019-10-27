@@ -32,23 +32,29 @@ public class Access {
 		}
 	}
 	
-	public static void startChat() {
+	public static Socket startChat() {
 	//	Chatting 쓰레드 생성
+		Socket Chat = null;
+		
 		try {
-			Socket Chat = ChatServer.accept();
-			new Thread(new lobby.Chat(Chat)).start();
+			Chat = ChatServer.accept();
 		}catch (IOException e) {
 			System.out.println("채팅 쓰레드 생성부분에서 예외 발생");
 		}
+		
+		return Chat;
 	}
 	
-	public static void startRoomInfo() {
+	public static Socket startRoomInfo() {
 	//	RoomInfo 쓰레드 생성
+		Socket RoomInfo = null;
+		
 		try {
-			Socket RoomInfo = RoomInfoServer.accept();
-			new Thread(new lobby.RoomInfo(RoomInfo)).start();
+			RoomInfo = RoomInfoServer.accept();
 		} catch (IOException e) {
 			System.out.println("롬정보 쓰레드 생성부분에서 예외 발생");
 		}
+		
+		return RoomInfo;
 	}
 }

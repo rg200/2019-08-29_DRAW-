@@ -7,8 +7,6 @@ public class MainServer {
 	public static void main(String[] args) {
 		
 		new Access();
-		
-	//	Main ì„œë²„ì˜¨
-		
+	//	Main ¾²·¹µå¿¡¼­ Á¢¼Ó ½ÇÇà
 	}
 }
