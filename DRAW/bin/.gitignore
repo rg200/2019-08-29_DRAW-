@@ -1,5 +1,4 @@
-/DB/
-/Default_Frame/
+/Default/
 /Gameboard_Screen/
 /Image/
 /Lobby_Screen/
@@ -9,11 +8,3 @@
 /Select_Screen/
 /Setting_Screen/
 /Signup_Screen/
-<<<<<<< HEAD
-/character/
-/common/
-/lobby/
-/login/
-/mainServer/
-=======
->>>>>>> refs/remotes/origin/master

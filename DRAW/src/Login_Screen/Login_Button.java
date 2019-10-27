@@ -2,6 +2,7 @@ package Login_Screen;
 
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
@@ -28,21 +29,35 @@ public class Login_Button extends Default_Button_Event {
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOGIN_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(LOGIN_ENTER);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOGIN_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(LOGIN_IN);// ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½
+		
+		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		DF.getContentPane().removeAll();
-		DF.add(new Lobby_Background(DF));//Select_Background ÆĞ³Î ºÒ·¯¿È 
-		DF.revalidate();
+		try {
+			Default_Frame.outData.writeUTF(Login_Background.ID_TextField.getText() + ":" + Login_Background.PW_TextField.getText());
+			System.out.println("ID PASS ì¼ì¹˜");
+			String awnser = Default_Frame.inData.readUTF();
+			if (awnser.equals("LoginAccept")) { // ë¡œê·¸ì¸ ì„±ê³µ
+				DF.getContentPane().removeAll();
+				DF.add(new Lobby_Background(DF));
+				DF.repaint();
+			} else
+				// ë¡œê·¸ì¸ ì‹¤íŒ¨
+				System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 	}
 }

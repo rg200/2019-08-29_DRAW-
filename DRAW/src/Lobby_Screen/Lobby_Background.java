@@ -7,6 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -37,7 +42,7 @@ public class Lobby_Background extends JPanel {
 	
 	public Lobby_Background(Default_Frame DF) {
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
 		setLayout(null); 
 		LBB = new Lobby_Back_Button(LOBBY_BACK, DF);
 		LJB = new Lobby_Join_Button(LOBBY_IN, DF);
@@ -45,13 +50,34 @@ public class Lobby_Background extends JPanel {
 		AB = new AddFriends_Background(DF);
 		LC = new Lobby_Chat();
 		PL = new Play_List();
-		add(LJB);	// join ��ư �߰� 
-		add(LBB);	// back ��ư 
+		add(LJB);	// join ��ư �߰� 
+		add(LBB);	// back ��ư 
 		add(LC);	
 		add(LAB);
 		add(AB);
 		add(PL);
-		AB.setVisible(false);	
+		AB.setVisible(false);
+		
+		// 네트워크 시작
+				String host = "localhost";
+
+				try {
+					Default_Frame.Chat = new Socket(host, 9001);
+					Default_Frame.outChat = new DataOutputStream(Default_Frame.Chat.getOutputStream());
+					Default_Frame.inChat = new DataInputStream(Default_Frame.Chat.getInputStream());
+					System.out.println("채팅 연결 성공");
+
+					Default_Frame.RoomInfo = new Socket(host, 9002);
+					Default_Frame.outRoomInfo = new DataOutputStream(Default_Frame.RoomInfo.getOutputStream());
+					Default_Frame.inRoomInfo = new DataInputStream(Default_Frame.RoomInfo.getInputStream());
+					System.out.println("방정보 연결 성공");
+				} catch (UnknownHostException e) {
+					System.err.println("호스트 못찾음." + host);
+				} catch (IOException e) {
+					System.err.println("Couldn't get I/O for the connection to the host " + host);
+				}
+
+		//네트워크 끝
 	}
 	
 	public void setAB() {

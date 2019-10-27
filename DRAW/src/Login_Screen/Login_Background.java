@@ -5,6 +5,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,14 +28,14 @@ public class Login_Background extends JPanel{
 	private ImageIcon LOGIN_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_IN.png"));
 	private ImageIcon LOGIN_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_ENTER.png"));
 	private Default_Frame DF;
-	private JTextField ID_TextField = new JTextField();
-	private JTextField PW_TextField = new JTextField();
+	public static JTextField ID_TextField = new JTextField(); // 아이디 받아오기 위해 수정 private -> public static
+	public static JTextField PW_TextField = new JTextField(); // 패스워드 받아오기 위해 수정 private -> public static
 	private Login_Back_Button LBB;
 	private Login_Button LB;
 	
 	public Login_Background(Default_Frame DF) {
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
 		setLayout(null); 
 		LBB = new Login_Back_Button(LOGIN_BACK, DF);
 		LB = new Login_Button(LOGIN_IN, DF);
@@ -49,6 +54,24 @@ public class Login_Background extends JPanel{
 		
 		setVisible(true);
 		
+		// 네트워크
+				// 포트번호
+				int portNumber = 9000;
+				// IP지정
+				String host = "localhost";
+
+				try {
+					Default_Frame.clientSocket = new Socket(host, portNumber);
+					Default_Frame.outData = new DataOutputStream(Default_Frame.clientSocket.getOutputStream());
+					Default_Frame.inData = new DataInputStream(Default_Frame.clientSocket.getInputStream());
+					System.out.println("네트워크 연결 성공");
+				} catch (UnknownHostException e) {
+					System.err.println("주소가 잘못 되었습니다.." + host);
+				} catch (IOException e) {
+					System.err.println("Couldn't get I/O for the connection to the host " + host);
+				}
+
+		// 네트워크 끝
 
 		
 	}
