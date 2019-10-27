@@ -16,12 +16,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Default.Default_Frame;
+import Default.Default_ScrollBar_UI;
 import Login_Screen.Login_Background;
 import Main_Screen.Main_Background;
 import Room_Screen.Room_Background;
 
 public class Lobby_Background extends JPanel {
-	private static String newline = "\n";
 	private Image Lob_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_SCREEN.png")).getImage();
 	private ImageIcon LOBBY_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_BACK.png"));
 	private ImageIcon LOBBY_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_JOIN.png"));
@@ -41,7 +41,7 @@ public class Lobby_Background extends JPanel {
 		setLayout(null); 
 		LBB = new Lobby_Back_Button(LOBBY_BACK, DF);
 		LJB = new Lobby_Join_Button(LOBBY_IN, DF);
-		LAB = new Lobby_AddFriends_Button(ADDFREIDNS, DF);
+		LAB = new Lobby_AddFriends_Button(ADDFREIDNS, this);
 		AB = new AddFriends_Background(DF);
 		LC = new Lobby_Chat();
 		PL = new Play_List();
@@ -51,15 +51,15 @@ public class Lobby_Background extends JPanel {
 		add(LAB);
 		add(AB);
 		add(PL);
-		AB.setVisible(false);
-		
+		AB.setVisible(false);	
 	}
 	
-
-
+	public void setAB() {
+		AB.setVisible(true);
+	}
+	
 	public void paintComponent(Graphics g) {
 		g.drawImage(Lob_Background, 0, 0, this.getWidth(), this.getHeight(), this);
 	}
-
 
 }

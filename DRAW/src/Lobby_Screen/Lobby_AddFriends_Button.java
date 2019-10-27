@@ -2,6 +2,7 @@ package Lobby_Screen;
 
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Field;
 
 import javax.swing.ImageIcon;
 
@@ -14,10 +15,12 @@ import Select_Screen.Select_Background;
 public class Lobby_AddFriends_Button extends Default_Button_Event{
 	private ImageIcon ADDFREIDNS = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_ADDFRIENDS.png"));
 	private ImageIcon ADDFREIDNS_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_ADDFRIENDS_ENTER.png"));
+	private Lobby_Background LB;
 	private Default_Frame DF;
+	private AddFriends_Background AB;
 	
-	public Lobby_AddFriends_Button(ImageIcon icon, Default_Frame DF) {
-		this.DF = DF;
+	public Lobby_AddFriends_Button(ImageIcon icon, Lobby_Background LB) {	
+		this.LB = LB;
 		setIcon(icon);
 		setBorderPainted(false);
 		setFocusable(false);
@@ -40,6 +43,6 @@ public class Lobby_AddFriends_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		LB.setAB();
 	}
 }

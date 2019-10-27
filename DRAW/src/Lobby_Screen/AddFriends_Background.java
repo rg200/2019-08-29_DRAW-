@@ -19,7 +19,6 @@ public class AddFriends_Background extends JPanel{
 	
 	public AddFriends_Background(Default_Frame DF) {
 		this.DF = DF;
-		setOpaque(false);
 		setLayout(null);
 		setBounds(100,200,1137, 485);
 		
