@@ -36,47 +36,64 @@ public class RoomInfo implements Runnable {
 	}
 	public void run() {
 
-		roomUpdate();
-	//	최초 유저의 로비에 방목록을 뿌려줌
+		while(true) {
 		
-		switch(Receive.ReceiveData(request)) {
-	//	클라이언트로부터 방 생성 및 방 접속 신호를 받아옴
-		case "Create":
-			createRoom();
-			break;
-		case "Join":
-			joinRoom(Receive.ReceiveInt(request));
-			break;
-		case "reload":
 			roomUpdate();
-			break;
+		//	최초 유저의 로비에 방목록을 뿌려줌
+			
+			switch(Receive.ReceiveData(request)) {
+		//	클라이언트로부터 방 생성 및 방 접속 신호를 받아옴
+			case "Create":
+				createRoom();
+				break;
+			case "Join":
+				joinRoom(Receive.ReceiveInt(request));
+				break;
+			case "reload":
+				roomUpdate();
+				break;
+				
+			case "exit":
+				removeRoom();
+				break;
+			}
 		}
-
 	}
 	
 	public void createRoom() {
 	//	방 생성
 		String roomName = Receive.ReceiveData(request);
-		Channel.getRoom(channel).put(Room.roomNum++, new Room(roomName, user));
+		Channel.getRooms(channel).put(Room.roomNum++, new Room(roomName, user));
 	}
 	
 	public void joinRoom(int roomNum) {
 	//	방 접속
-		Channel.getRoom(channel).get(roomNum).addUser(user);
+		Channel.getRoom(channel,roomNum).addUser(user);
 	}
 	
 	public void roomUpdate() {
 	//	방 새로고침
 		
-		Set<Integer> room = Channel.getRoom(channel).keySet();
+		Set<Integer> room = Channel.getRooms(channel).keySet();
 		Iterator<Integer> roomNum = room.iterator();
 		System.out.println(roomNum);
 		while(roomNum.hasNext()) {
 			if(roomNum.next().equals(0)) {
 				Send.sendInt(response, Room.roomNum-1);
 			}else {
-				Send.sendData(response, Channel.getRoom(channel).get(roomNum).getRoomName());
+				Send.sendData(response, Channel.getRoom(channel,roomNum.next()).getRoomName());
 			}
 		}
 	}
+	
+	public void removeRoom() {
+		Channel.getRoom(channel,user.getRoomNumber()).removeUser(user);
+		
+		if(Channel.getRoom(channel,user.getRoomNumber()).getRoomSize() == 0) {
+			
+		}
+	}
+	
+	
+	// 방 삭제하는 부분까지 만들다가 말았음
 }
