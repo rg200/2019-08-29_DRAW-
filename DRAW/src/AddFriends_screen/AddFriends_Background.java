@@ -23,7 +23,6 @@ public class AddFriends_Background extends JPanel{
 	private JTextField ADD_TextField = new JTextField();
 	private Default_Frame DF;
 	private AddFriends_Back_Button ABB;
-	private Lobby_Background LB;
 	private AddFriends_Add_Button AAB;
 	
 	
@@ -31,9 +30,9 @@ public class AddFriends_Background extends JPanel{
 		this.DF = DF;
 		setLayout(null);
 		setBounds(100,200,1137, 485);
-		ABB = new AddFriends_Back_Button(ADDFRIENDS_BACK_IN, LB);
-		AAB = new AddFriends_Add_Button(ADD_IN, DF);
-		ADD_TextField.setBounds(77, 245, 978, 100);
+		ABB = new AddFriends_Back_Button(ADDFRIENDS_BACK_IN);
+		AAB = new AddFriends_Add_Button(ADD_IN);
+		ADD_TextField.setBounds(77, 245, FreindsAdd_Background.getWidth(DF),FreindsAdd_Background.getHeight(DF));
 		ADD_TextField.setBorder(null);
 		ADD_TextField.setFont(new Font("Stencil",Font.HANGING_BASELINE,50));
 		ADD_TextField.setOpaque(false);

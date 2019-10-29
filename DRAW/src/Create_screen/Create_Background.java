@@ -14,20 +14,19 @@ import Main_Screen.Main_Background;
 
 public class Create_Background extends JPanel{
 	private Image Create_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_SCREEN.png")).getImage();
-	private ImageIcon LOBBY_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_BACK.png"));
+	private ImageIcon CREATE_BACK_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_IN.png"));
 	private ImageIcon CREATE_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_IN.png"));
 	private JTextField CREATE_TextField = new JTextField();
 	private Default_Frame DF;
-	private Lobby_Background LB;
 	private Create_Back_Button CBB;
 	private Create_Button CB;
 	
 	public Create_Background(Default_Frame DF) {
 		this.DF = DF;
 		setLayout(null);
-		CBB = new Create_Back_Button(LOBBY_BACK, LB);
-		CB = new Create_Button(CREATE_IN, DF);
-		setBounds(100,200,1137, 663);
+		setBounds(100,200,Create_Background.getWidth(DF),Create_Background.getHeight(DF));
+		CBB = new Create_Back_Button(CREATE_BACK_IN);
+		CB = new Create_Button(CREATE_IN);
 		CREATE_TextField.setBounds(75, 280, 970, 100);
 		CREATE_TextField.setBorder(null);
 		CREATE_TextField.setFont(new Font("Stencil",Font.HANGING_BASELINE,50));

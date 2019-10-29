@@ -15,10 +15,8 @@ import Main_Screen.Main_Background;
 public class Create_Button extends Default_Button_Event{
 	private ImageIcon CREATE_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_IN.png"));
 	private ImageIcon CREATE_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_ENTER.png"));
-	
-	private Default_Frame DF;
-	public Create_Button(ImageIcon icon, Default_Frame DF) {
-		this.DF = DF;
+
+	public Create_Button(ImageIcon icon) {
 		setIcon(icon);
 		setBorderPainted(false);
 		setFocusable(false);

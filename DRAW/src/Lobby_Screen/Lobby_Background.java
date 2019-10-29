@@ -50,23 +50,24 @@ public class Lobby_Background extends JPanel {
 		setLayout(null); 
 		LBB = new Lobby_Back_Button(LOBBY_BACK, DF);
 		LJB = new Lobby_Join_Button(LOBBY_IN, DF);
-		LAB = new Lobby_AddFriends_Button(ADDFREIDNS, this);
+		LAB = new Lobby_AddFriends_Button(ADDFREIDNS);
 		LRB = new Lobby_Refresh_Button(REFRESH_IN, DF);
-		LCB = new Lobby_Create_Buttonn(CREATE, this);
+		LCB = new Lobby_Create_Buttonn(CREATE);
 		AB = new AddFriends_Background(DF);
 		CB = new Create_Background(DF);
 		LC = new Lobby_Chat();
 		PL = new Play_List();
 		
 		add(LJB);	// join 버튼 추가 
-		add(LBB);	// back 버튼 
-		add(LC);	
+		add(LBB);	// back 버튼 	
 		add(LAB);
 		add(AB);
+		add(CB);
 		add(PL);
 		add(LRB);
 		add(LCB);
-		add(CB);
+		add(LC);
+		
 		CB.setVisible(false);
 		AB.setVisible(false);	
 	}
