@@ -9,14 +9,19 @@ import javax.swing.JTextField;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Lobby_Screen.Lobby_Background;
 import Login_Screen.Login_Background;
 import Main_Screen.Main_Background;
+import Room_Screen.Room_Background;
+import Util.SendServer;
 
 public class Create_Button extends Default_Button_Event{
 	private ImageIcon CREATE_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_IN.png"));
 	private ImageIcon CREATE_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_ENTER.png"));
-
-	public Create_Button(ImageIcon icon) {
+	
+	private Default_Frame DF;
+	public Create_Button(ImageIcon icon, Default_Frame DF) {
+		this.DF = DF;
 		setIcon(icon);
 		setBorderPainted(false);
 		setFocusable(false);
@@ -38,5 +43,12 @@ public class Create_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		SendServer.SendData(Default_Frame.outRoomInfo, "Create");
+		
+		SendServer.SendData(Default_Frame.outRoomInfo, Create_Background.CREATE_TextField.getText());
+		
+		DF.getContentPane().removeAll();
+		DF.add(new Room_Background(DF));
+		DF.repaint();
 	}
 }

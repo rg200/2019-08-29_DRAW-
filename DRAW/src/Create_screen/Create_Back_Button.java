@@ -13,13 +13,16 @@ import Main_Screen.Main_Background;
 public class Create_Back_Button extends Default_Button_Event{
 	private ImageIcon CREATE_BACK_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_IN.png"));
 	private ImageIcon CREATE_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_ENTER.png"));
+	private Lobby_Background LB;
+	private Default_Frame DF;
 	
-	public Create_Back_Button(ImageIcon icon) {
+	public Create_Back_Button(ImageIcon icon, Lobby_Background LB) {
+		this.LB = LB;
 		setIcon(icon);
 		setBorderPainted(false);
 		setFocusable(false);
 		setContentAreaFilled(false);
-		setBounds(750,580, icon.getIconWidth(), icon.getIconHeight());
+		setBounds(722,570, icon.getIconWidth(), icon.getIconHeight());
 		addMouseListener(this);
 	}
 	public void mouseEntered(MouseEvent e) {

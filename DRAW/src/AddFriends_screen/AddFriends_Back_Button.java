@@ -13,8 +13,10 @@ import Main_Screen.Main_Background;
 public class AddFriends_Back_Button extends Default_Button_Event{
 	private ImageIcon ADDFRIENDS_BACK_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/FRIENDS/FRIENDS_BACK_BUTTON_IN.png"));
 	private ImageIcon ADDFRIENDS_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/FRIENDS/FRIENDS_BACK_BUTTON_ENTER.png"));
-
-	public AddFriends_Back_Button(ImageIcon icon) {
+	private Lobby_Background LB;
+	private Default_Frame DF;
+	public AddFriends_Back_Button(ImageIcon icon, Lobby_Background LB) {
+		this.LB = LB;
 		setIcon(icon);
 		setBorderPainted(false);
 		setFocusable(false);

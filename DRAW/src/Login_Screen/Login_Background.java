@@ -20,6 +20,7 @@ import Default.Default_Frame;
 import Lobby_Screen.Lobby_Background;
 import Main_Screen.Main_Background;
 import Select_Screen.Select_Background;
+import Util.AccessServer;
 
 public class Login_Background extends JPanel{
 	private Image Log_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_SCREEN.png")).getImage();
@@ -55,22 +56,7 @@ public class Login_Background extends JPanel{
 		setVisible(true);
 		
 		// 네트워크
-				// 포트번호
-				int portNumber = 9000;
-				// IP지정
-				String host = "localhost";
-
-				try {
-					Default_Frame.clientSocket = new Socket(host, portNumber);
-					Default_Frame.outData = new DataOutputStream(Default_Frame.clientSocket.getOutputStream());
-					Default_Frame.inData = new DataInputStream(Default_Frame.clientSocket.getInputStream());
-					System.out.println("네트워크 연결 성공");
-				} catch (UnknownHostException e) {
-					System.err.println("주소가 잘못 되었습니다.." + host);
-				} catch (IOException e) {
-					System.err.println("Couldn't get I/O for the connection to the host " + host);
-				}
-
+		AccessServer.AccessUserInfo();
 		// 네트워크 끝
 
 		
