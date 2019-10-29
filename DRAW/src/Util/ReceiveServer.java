@@ -2,7 +2,7 @@ package Util;
 
 import java.io.DataInputStream;
 
-class ReceiveServer {
+public class ReceiveServer {
 
 	public static String ReceiveData(DataInputStream in) {
 		

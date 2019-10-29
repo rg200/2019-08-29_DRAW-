@@ -3,6 +3,7 @@ package Lobby_Screen;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataOutputStream;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -11,6 +12,8 @@ import javax.swing.JTextField;
 
 import Default.Default_Frame;
 import Default.Default_ScrollBar_UI;
+import Util.SendServer;
+import Util.ReceiveServer;
 
 public class Lobby_Chat extends JPanel implements ActionListener {
 	private static String newline = "\n";
@@ -26,31 +29,50 @@ public class Lobby_Chat extends JPanel implements ActionListener {
 		add(Chat_TextArea_Scroll);
 		Chat_TextArea_Scroll.setVisible(true);
 		Chat_TextArea_Scroll.setBounds(3, 0, 1130, 125);
-		Chat_TextArea_Scroll.getViewport().setOpaque(false);// textarea¶û scroll µÑ´Ù Åõ¸íÀ¸·Î ÇØÁà¾ßÁö Àû¿ëµÊ
+		Chat_TextArea_Scroll.getViewport().setOpaque(false);// textareaï¿½ï¿½ scroll ï¿½Ñ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		Chat_TextArea_Scroll.getViewport().setBorder(null);
-		Chat_TextArea.setLineWrap(true);// ÀÚµ¿ ÁÙ¹Ù²Ù±â
+		Chat_TextArea.setLineWrap(true);// ï¿½Úµï¿½ ï¿½Ù¹Ù²Ù±ï¿½
 		Chat_TextArea_Scroll.setOpaque(false);
 		Chat_TextArea_Scroll.setBorder(null);
-		Chat_TextArea_Scroll.getVerticalScrollBar().setUI(new Default_ScrollBar_UI());// ui ¹Ù²Ù±âÀ§ÇØ ³ÖÀ½
+		Chat_TextArea_Scroll.getVerticalScrollBar().setUI(new Default_ScrollBar_UI());// ui ï¿½Ù²Ù±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Chat_TextArea.setOpaque(false);
 		Chat_TextArea.setBorder(null);
-		Chat_TextArea.setFont(new Font("±¼¸²", Font.BOLD, 18));
-		Chat_TextArea.setEditable(false);// ÆíÁý ºÒ°¡´ÉÇÏ°Ô ÇÔ
+		Chat_TextArea.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 18));
+		Chat_TextArea.setEditable(false);// ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½
 		Chat_TextField.setBounds(0, 130, 1130, 65);
 		Chat_TextField.setBorder(null);
-		Chat_TextField.setFont(new Font("±¼¸²", Font.BOLD, 50));
+		Chat_TextField.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 50));
 		Chat_TextField.setOpaque(false);
 		Chat_TextField.requestFocus();
 		Chat_TextField.addActionListener(this);
-
+		
+		
+	
 
 	}
-
+	
+	public class ReceiveThread implements Runnable{
+		public void run(){
+			while(true) {
+				String text = null;
+				text = ReceiveServer.ReceiveData(Default_Frame.inChat);
+				if(text != null) {
+					Chat_TextArea.append(text + newline);
+					Chat_TextArea.setCaretPosition(Chat_TextArea.getDocument().getLength());
+				}
+			}
+		}
+		
+	}
+	public void on() {
+		new Thread(new ReceiveThread()).start();
+	}
 	public void actionPerformed(ActionEvent evt) {
 		String text = Chat_TextField.getText();
-		Chat_TextArea.append(text + newline); //area ÇÊµå¿¡ ³»¿ë µé¾î°¡´Â °Í 
+		SendServer.SendData(Default_Frame.outChat, text);
+		//Chat_TextArea.append(text + newline); //area ï¿½Êµå¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ 
 		Chat_TextField.selectAll();
-		Chat_TextArea.setCaretPosition(Chat_TextArea.getDocument().getLength());// °ªÀ» ¹Þ¾Æ µéÀÌ´Â °÷ 
+		//Chat_TextArea.setCaretPosition(Chat_TextArea.getDocument().getLength());// ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ 
 		Chat_TextField.setText("");
 	}
 }

@@ -46,7 +46,7 @@ public class Lobby_Background extends JPanel {
 	
 	public Lobby_Background(Default_Frame DF) {
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// Å©±â °íÁ¤
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		setLayout(null); 
 		LBB = new Lobby_Back_Button(LOBBY_BACK, DF);
 		LJB = new Lobby_Join_Button(LOBBY_IN, DF);
@@ -58,8 +58,8 @@ public class Lobby_Background extends JPanel {
 		LC = new Lobby_Chat();
 		PL = new Play_List();
 		
-		add(LJB);	// join ¹öÆ° Ãß°¡ 
-		add(LBB);	// back ¹öÆ° 
+		add(LJB);	// join ï¿½ï¿½Æ° ï¿½ß°ï¿½ 
+		add(LBB);	// back ï¿½ï¿½Æ° 
 		add(LC);	
 		add(LAB);
 		add(AB);
@@ -68,7 +68,9 @@ public class Lobby_Background extends JPanel {
 		add(LCB);
 		add(CB);
 		CB.setVisible(false);
-		AB.setVisible(false);	
+		AB.setVisible(false);
+		
+		LC.on();
 	}
 	
 	public static void AddfriendsSetvisible() {
