@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.sun.prism.paint.Stop;
+
 import character.GameCharacter;
 import common.Receive;
 import common.Send;
@@ -36,10 +38,12 @@ public class RoomInfo implements Runnable {
 	}
 	public void run() {
 
-		while(true) {
+		System.out.println("쓰레드 열림");
 		
-			roomUpdate();
+		roomUpdate(channel);
 		//	최초 유저의 로비에 방목록을 뿌려줌
+		
+		while(true) {
 			
 			switch(Receive.ReceiveData(request)) {
 		//	클라이언트로부터 방 생성 및 방 접속 신호를 받아옴
@@ -50,13 +54,15 @@ public class RoomInfo implements Runnable {
 				joinRoom(Receive.ReceiveInt(request));
 				break;
 			case "reload":
-				roomUpdate();
+				roomUpdate(channel);
 				break;
 				
 			case "exit":
 				removeRoom();
 				break;
-			}
+			default:
+				return;
+			} 
 		}
 	}
 	
@@ -64,6 +70,8 @@ public class RoomInfo implements Runnable {
 	//	방 생성
 		String roomName = Receive.ReceiveData(request);
 		Channel.getRooms(channel).put(Room.roomNum++, new Room(roomName, user));
+		
+		System.out.println(Channel.getRoom(channel,Room.roomNum-1).getRoomName());
 	}
 	
 	public void joinRoom(int roomNum) {
@@ -71,18 +79,15 @@ public class RoomInfo implements Runnable {
 		Channel.getRoom(channel,roomNum).addUser(user);
 	}
 	
-	public void roomUpdate() {
+	public void roomUpdate(int channel) {
 	//	방 새로고침
 		
-		Set<Integer> room = Channel.getRooms(channel).keySet();
-		Iterator<Integer> roomNum = room.iterator();
+		int roomNum = Channel.getRooms(channel).size();
 		System.out.println(roomNum);
-		while(roomNum.hasNext()) {
-			if(roomNum.next().equals(0)) {
-				Send.sendInt(response, Room.roomNum-1);
-			}else {
-				Send.sendData(response, Channel.getRoom(channel,roomNum.next()).getRoomName());
-			}
+		for(int i = 1; i < roomNum; i++) {
+			
+			Send.sendData(response, Channel.getRoom(channel,i).getRoomName());
+
 		}
 	}
 	
@@ -93,7 +98,4 @@ public class RoomInfo implements Runnable {
 			
 		}
 	}
-	
-	
-	// 방 삭제하는 부분까지 만들다가 말았음
 }

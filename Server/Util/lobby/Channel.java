@@ -8,29 +8,29 @@ import character.GameCharacter;
 import room.Room;
 
 public class Channel {		
-// Send °´Ã¼¶§¹®¿¡ ÀÓÀÇ·Î ¸¸µé¾îµÒ º¯°æµÉ °¡´É¼º ÀÖÀ½
+// Send ê°ì²´ë•Œë¬¸ì— ì„ì˜ë¡œ ë§Œë“¤ì–´ë‘  ë³€ê²½ë  ê°€ëŠ¥ì„± ìˆìŒ
 	private static Map<Integer, Map<Integer, Room>> Channels = Collections.synchronizedMap(new HashMap<>());
-//	Ã¤³ÎÀ» ´ã¾ÆµÎ´Â Map
+//	ì±„ë„ì„ ë‹´ì•„ë‘ëŠ” Map
 	
 	private Map<Integer, Room>Rooms = Collections.synchronizedMap(new HashMap<>()); 
-//	¹æ Á¤º¸¸¦ ¸¸µé°Å³ª ¹Ş¾Æ¿À´Â Room Map
+//	ë°© ì •ë³´ë¥¼ ë§Œë“¤ê±°ë‚˜ ë°›ì•„ì˜¤ëŠ” Room Map
 	
 	Room room;
 	
 	public Channel(GameCharacter character,int channelNumber){
 		if(this.Channels.containsKey(channelNumber)) {
-	//	À¯Àú°¡ ¼±ÅÃÇÑ ChannelsÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+	//	ìœ ì €ê°€ ì„ íƒí•œ Channelsì´ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
 			Rooms = this.Channels.get(channelNumber);
 			Rooms.get(0).addUser(character);
-			System.out.println("Ã¤³Î¿¡ Æş´ç~");
-	// 	ºñ¾î ÀÖÁö ¾Ê´Ù¸é 0¹ø¹æ(·Îºñ)¿¡ À¯Àú¸¦ Ãß°¡
+			System.out.println("ì±„ë„ì— íë‹¹~");
+	// 	ë¹„ì–´ ìˆì§€ ì•Šë‹¤ë©´ 0ë²ˆë°©(ë¡œë¹„)ì— ìœ ì €ë¥¼ ì¶”ê°€
 		}else {
-	//	ºñ¾î ÀÖ´Ù¸é
+	//	ë¹„ì–´ ìˆë‹¤ë©´
 			room = new Room("lobby", character);
 			Rooms.put(0, room);
 			this.Channels.put(channelNumber, Rooms);
-			System.out.println("Ã¤³ÎÀ» Ãß°¡~");
-	//	0¹ø ¹æÀ» ¸¸µé¾î Channels¿¡ ÀúÀå
+			System.out.println("ì±„ë„ì„ ì¶”ê°€~");
+	//	0ë²ˆ ë°©ì„ ë§Œë“¤ì–´ Channelsì— ì €ì¥
 		}
 	}
 	

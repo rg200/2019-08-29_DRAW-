@@ -17,7 +17,7 @@ public class Send {
 		}
 	}
 	
-	public static void sendInt(DataOutputStream outData,int data) {
+	public static void sendData(DataOutputStream outData,int data) {
 		try {
 			outData.writeInt(data);
 		} catch (IOException e) {
