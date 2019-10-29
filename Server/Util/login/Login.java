@@ -33,7 +33,7 @@ public class Login implements Runnable {
 	}
 
 	public void makeChat_RoomInfo(GameCharacter user, int Channel) {
-		new Thread(new lobby.Chat(user.getChat())).start();
+		new Thread(new lobby.Chat(user)).start();
 		new Thread(new room.RoomInfo(user,Channel)).start();
 	}
 	

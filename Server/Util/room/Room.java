@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import character.GameCharacter;
 
 public class Room  {
-	// ¹æ Å¬·¡½º ¾ÆÁ÷ ¹Ì±¸Çö
+	// ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½
 	public static int roomNum = 1;
 	private ArrayList<GameCharacter> clients = new ArrayList<GameCharacter>();
-//	¹æ¿¡¼­ÀÇ À¯Àú ¸ñ·Ï
+//	ï¿½æ¿¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	
 	private String roomName;
 	
 	public Room(String roomName, GameCharacter client) {
-//	¹æ »ý¼º½Ã À¯Àú Ãß°¡
+//	ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		this.roomName = roomName;
 		clients.add(client);
 	}
 	
 	public void addUser(GameCharacter client) {
-//	ÀÌ¹Ì ÀÖ´Â ¹æÀÏ °æ¿ì À¯Àú Ãß°¡ 
+//	ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ 
 		clients.add(client);
 	}
 	
@@ -33,6 +33,9 @@ public class Room  {
 	
 	public String getRoomName() {
 		return String.format("%s", roomName);
-	//	¹æÁ¦¸ñ ºÒ·¯¿À´Â ¸Þ¼­µå
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	}
+	public ArrayList<GameCharacter> getArrayList() {
+		return clients;
 	}
 }

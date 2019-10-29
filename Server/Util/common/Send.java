@@ -2,9 +2,9 @@ package common;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import room.Room;
-
+import character.GameCharacter;
 public class Send {       
 // 전송
 	
@@ -25,9 +25,18 @@ public class Send {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void sendAll(Room room) {
+
+	public static  void sendAll(String data, ArrayList<GameCharacter> clients) {
 //	평소 전달	
+		for (GameCharacter gameCharacter : clients) {
+			try {
+				sendData(new DataOutputStream(gameCharacter.getChat().getOutputStream()),data);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static void whisper() {

@@ -4,18 +4,27 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+
+import character.*;
+import common.Receive;
+import common.Send;
+import room.Room;
 
 public class Chat implements Runnable {
-
+	private GameCharacter user = null;
 	private Socket chat = null;
+	private Room user_room = null;
+	private ArrayList<GameCharacter> user_room_cli = null;
 //	소켓이 필요할 수 있어서 일단 받아옴
 	private DataInputStream inChat = null;
 // 	Receive에 필요함
 	private DataOutputStream outChat = null;
-
-	public Chat(Socket chat){
+	private String ChatText;
+	public Chat(GameCharacter user){
 		// inData, outData 정의하는데 발생하는 예외
-		this.chat = chat;
+		this.user= user;
+		this.chat = user.getChat();
 		//클라이언트의 유저 정보 Socket을 받아옴
 		try {
 			this.inChat = new DataInputStream(chat.getInputStream());
@@ -28,6 +37,16 @@ public class Chat implements Runnable {
 	}
 
 	public void run() {
-		System.out.println("채팅 쓰레드가 열렸다~");
+		while(true) {
+			ChatText = Receive.ReceiveData(inChat);
+			if(ChatText.startsWith("/w"));
+			else {
+				ChatText = user.getNickName() +":"+ ChatText;
+				user_room = Channel.getRoom(user.getChannelNumber(), user.getRoomNumber());
+				user_room_cli = user_room.getArrayList();
+				System.out.println(ChatText);
+				Send.sendAll(ChatText,user_room_cli);
+			}
+		}
 	}
 }
