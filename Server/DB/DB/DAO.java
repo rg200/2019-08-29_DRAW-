@@ -36,49 +36,23 @@ public class DAO{
 
 		return con;
 	}
-	//중복된 닉네임인지 판별 메서드
-	public String checkMember(String id) {
-		boolean ok = false;
-		Connection con = null;
-		PreparedStatement ps = null;
-		con = getConn();
-
-		try {
-			con = getConn();
-			String sql = "select from TB_MEMBER where id=?";
-
-			ps = con.prepareStatement(sql);
-			ps.setString(1, id);
-			ResultSet r = ps.executeQuery(); 
-			if (r.next()) {
-				System.out.println(id + " is already exist, try again");
-			} else {
-				System.out.println("UserName does not exist, you can use this id");
-			}
-
-		} catch (Exception e) {
-			System.out.println(e + "-> �����߻�");
-		}
-		return "[DB]: Duplicate inspection complete";
-	}
-	//유저 삽입 메서드
-	public boolean insertMember(String id, String pwd, String name) {
+	//삽입 메서드 , 친구 추가가 디폴트 , 이후 방테이블추가 메서드등등으로 오버라이딩 해서 사용 가능
+	public boolean insert(String id, String nickName , String tbName) {
 
 		boolean ok = false;
 		Connection con = null; 
 		PreparedStatement ps = null;
 
 		try {
-			System.out.println(id + pwd + name);
+			//System.out.println(id + name); 콘솔확인용 
 			con = getConn();
-			String sql = "insert into TB_MEMBER(" + 
-								"id,pwd,name) " + 
-								"values(?,?,?)";
+			String sql = "insert into "+ tbName +"(" + 
+								"bf_id,bf_nickName) " + 
+								"values(?,?)";
 
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, pwd);
-			ps.setString(3, name);
+			ps.setString(2, nickName);
 			int r = ps.executeUpdate(); 
 			if(r>0){
                 System.out.println("가입 성공");   
@@ -92,15 +66,15 @@ public class DAO{
 		}
 
 		return ok;
-	}// 유저 로그인 시도시 맞는 유저인지 아이디와 패스워드대조 판별
-	public boolean searchMember(String id, String pwd) {
+	}// select와 같은 메서드 , 로그인기능이 디폴트임 , 오버라이딩 사용가능
+	public boolean search(String id, String pwd , String tbName) {
 
 		boolean ok = false;
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
 			con = getConn();
-			String sql = "select pwd, name from TB_MEMBER where id=?";
+			String sql = "select pwd from "+ tbName+" where id=?";
 
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
@@ -108,7 +82,6 @@ public class DAO{
 			if (rs.next()) {
 				if (pwd.equals(rs.getString("pwd"))) {
 					System.out.println("login succeeded");
-					name = rs.getString("name");
 					ok = true;
 				} else {
 					System.out.println("Wrong password, Login Failed");
@@ -118,8 +91,37 @@ public class DAO{
 			}
 
 		} catch (Exception e) {
-			System.out.println(e + "-> �����߻�");
+			System.out.println(e + "예외발생");
 		}
 		return ok;
 	}
+	//행삭제 메서드 ,친구 목록 삭제가 디폴트, 오버라이딩으로 사용 가능
+	public boolean delete(String id, String name , String tbName) {
+
+		boolean ok = false;
+		Connection con = null; 
+		PreparedStatement ps = null;
+
+		try {
+			//System.out.println(id + pwd + name); 테스트콘솔확인용
+			con = getConn();
+			String sql = "delete from "+tbName +" where bf_id='?' and bf_nickName='?'";
+
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, name);
+			int r = ps.executeUpdate(); 
+			if(r>0){
+                System.out.println("삭제 성공");   
+                ok=true;
+            }else{
+                System.out.println("삭제 실패");
+            }
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return ok;
+	}// select와 같은 메서드 , 유저 찾는 기능이 디폴트임
 }
