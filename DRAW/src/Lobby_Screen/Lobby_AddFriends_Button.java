@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 
 import javax.swing.ImageIcon;
 
+import AddFriends_screen.AddFriends_Background;
 import Default.Default_Button_Event;
 import Default.Default_Frame;
 import Login_Screen.Login_Background;
@@ -43,6 +44,6 @@ public class Lobby_AddFriends_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		LB.setAB();
+		Lobby_Background.AddfriendsSetvisible();
 	}
 }
