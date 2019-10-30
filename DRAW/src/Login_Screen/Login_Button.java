@@ -53,7 +53,7 @@ public class Login_Button extends Default_Button_Event {
 				AccessServer.AccessRoomChat();
 				DF.getContentPane().removeAll();
 				DF.add(new Lobby_Background(DF));
-				DF.repaint();
+				DF.revalidate();
 			} else
 				// 로그인 실패
 				System.out.println("로그인 실패");
