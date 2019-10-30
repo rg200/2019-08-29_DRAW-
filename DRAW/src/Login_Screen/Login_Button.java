@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import Default.Default_Button_Event;
 import Default.Default_Frame;
 import Lobby_Screen.Lobby_Background;
+import Lobby_Screen.Lobby_RoomInfo;
 import Main_Screen.Main_Background;
 import Util.AccessServer;
 
@@ -51,6 +52,7 @@ public class Login_Button extends Default_Button_Event {
 			String awnser = Default_Frame.inData.readUTF();
 			if (awnser.equals("LoginAccept")) { // 로그인 성공
 				AccessServer.AccessRoomChat();
+				Lobby_RoomInfo LR = new Lobby_RoomInfo();
 				DF.getContentPane().removeAll();
 				DF.add(new Lobby_Background(DF));
 				DF.revalidate();

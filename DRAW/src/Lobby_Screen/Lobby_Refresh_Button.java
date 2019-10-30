@@ -9,6 +9,8 @@ import Default.Default_Button_Event;
 import Default.Default_Frame;
 import Main_Screen.Main_Background;
 import Room_Screen.Room_Background;
+import Util.ReceiveServer;
+import Util.SendServer;
 
 public class Lobby_Refresh_Button extends Default_Button_Event{
 	
@@ -40,6 +42,7 @@ public class Lobby_Refresh_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-
+		SendServer.SendData(Default_Frame.outRoomInfo, "reload");
+		Lobby_Background.PL.revalidate();
 	}
 }

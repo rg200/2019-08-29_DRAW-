@@ -40,7 +40,7 @@ public class Lobby_Background extends JPanel {
 	private Lobby_Chat LC;
 	private Lobby_AddFriends_Button LAB;
 	private static AddFriends_Background AB;
-	private static Play_List PL;
+	public static Play_List PL;
 	private Lobby_Refresh_Button LRB;
 	private Lobby_Create_Buttonn LCB;
 	private static Create_Background CB;
@@ -65,9 +65,9 @@ public class Lobby_Background extends JPanel {
 		add(LAB);
 		add(AB);
 		add(CB);
-		add(PL);
 		add(LRB);
 		add(LCB);
+		add(PL);
 		
 		CB.setVisible(false);
 		AB.setVisible(false);
@@ -84,8 +84,9 @@ public class Lobby_Background extends JPanel {
 		CB.setVisible(Select1);
 	}
 
-	public static void AddPlaylistButton() {
-		PL.add(new PlayList_Button());
+	public static void AddPlaylistButton(String st) {
+		PL.add(new PlayList_Button(st));
+		System.out.println("����");
 	}
 	
 	public void paintComponent(Graphics g) {

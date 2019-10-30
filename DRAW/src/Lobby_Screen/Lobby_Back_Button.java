@@ -40,6 +40,7 @@ public class Lobby_Back_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		
 		DF.getContentPane().removeAll();
 		DF.add(new Login_Background(DF));//Select_Background ÆÐ³Î ºÒ·¯¿È 
 		DF.revalidate();
