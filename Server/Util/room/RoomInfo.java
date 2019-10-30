@@ -43,7 +43,7 @@ public class RoomInfo implements Runnable {
 		roomUpdate(channel);
 		//	최초 유저의 로비에 방목록을 뿌려줌
 		
-		while(true) {
+		while(!Thread.currentThread().isInterrupted()) {
 			
 			switch(Receive.ReceiveData(request)) {
 		//	클라이언트로부터 방 생성 및 방 접속 신호를 받아옴
@@ -72,6 +72,7 @@ public class RoomInfo implements Runnable {
 		Channel.getRooms(channel).put(Room.roomNum++, new Room(roomName, user));
 		
 		System.out.println(Channel.getRoom(channel,Room.roomNum-1).getRoomName());
+		System.out.println("반등");
 	}
 	
 	public void joinRoom(int roomNum) {
@@ -88,6 +89,7 @@ public class RoomInfo implements Runnable {
 			
 			Send.sendData(response, Channel.getRoom(channel,i).getRoomName());
 
+			System.out.println(Channel.getRoom(channel,i).getRoomName());
 		}
 	}
 	
