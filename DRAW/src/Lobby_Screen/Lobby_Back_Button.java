@@ -9,6 +9,7 @@ import Default.Default_Button_Event;
 import Default.Default_Frame;
 import Login_Screen.Login_Background;
 import Main_Screen.Main_Background;
+import Util.SendServer;
 
 public class Lobby_Back_Button extends Default_Button_Event{
 
@@ -28,21 +29,22 @@ public class Lobby_Back_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOBBY_BACK_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ð¾çÀ¸·Î
+		setIcon(LOBBY_BACK_ENTER);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOBBY_BACK);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(LOBBY_BACK);// ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		SendServer.SendData(Default_Frame.outData, "Logout");
 		
 		DF.getContentPane().removeAll();
-		DF.add(new Login_Background(DF));//Select_Background ÆÐ³Î ºÒ·¯¿È 
+		DF.add(new Login_Background(DF));//Select_Background ï¿½Ð³ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ 
 		DF.revalidate();
 	}
 }

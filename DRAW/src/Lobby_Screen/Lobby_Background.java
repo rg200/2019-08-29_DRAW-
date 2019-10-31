@@ -72,7 +72,7 @@ public class Lobby_Background extends JPanel {
 		CB.setVisible(false);
 		AB.setVisible(false);
 		
-		LC.on();
+		
 	}
 	
 	public static void AddfriendsSetvisible() {
@@ -88,7 +88,6 @@ public class Lobby_Background extends JPanel {
 		PL.add(new PlayList_Button(st));
 		System.out.println("����");
 	}
-	
 	public void paintComponent(Graphics g) {
 		g.drawImage(Lob_Background, 0, 0, this.getWidth(), this.getHeight(), this);
 	}

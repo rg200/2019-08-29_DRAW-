@@ -4,7 +4,7 @@ import Default.Default_Frame;
 import Util.ReceiveServer;
 
 public class Lobby_RoomInfo implements Runnable{
-//	¹æ Á¤º¸¸¦ ¹Þ¾Æ¿À´Â ¾²·¹µå
+//	ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Lobby_RoomInfo() {
 		new Thread(this).start();
 	}
@@ -14,8 +14,13 @@ public class Lobby_RoomInfo implements Runnable{
 
 		while(!Thread.currentThread().isInterrupted()) {
 			String st = ReceiveServer.ReceiveData(Default_Frame.inRoomInfo);
-			System.out.println("¹Þ¾Æ¿È");
+			/*if(st.equals("Logout")) {
+				Thread.currentThread().interrupt();
+			}*/
+			System.out.println("ï¿½Þ¾Æ¿ï¿½");
 			Lobby_Background.AddPlaylistButton(st);
+			
 		}
+		//System.out.println("shutDouwn");
 	}
 }

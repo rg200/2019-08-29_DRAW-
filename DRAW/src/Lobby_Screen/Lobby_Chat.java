@@ -46,27 +46,12 @@ public class Lobby_Chat extends JPanel implements ActionListener {
 		Chat_TextField.requestFocus();
 		Chat_TextField.addActionListener(this);
 		
-		
+		Util.ChatThread.SetTextArea(Chat_TextArea);
 	
 
 	}
 	
-	public class ReceiveThread implements Runnable{
-		public void run(){
-			while(true) {
-				String text = null;
-				text = ReceiveServer.ReceiveData(Default_Frame.inChat);
-				if(text != null) {
-					Chat_TextArea.append(text + newline);
-					Chat_TextArea.setCaretPosition(Chat_TextArea.getDocument().getLength());
-				}
-			}
-		}
-		
-	}
-	public void on() {
-		new Thread(new ReceiveThread()).start();
-	}
+	
 	public void actionPerformed(ActionEvent evt) {
 		String text = Chat_TextField.getText();
 		SendServer.SendData(Default_Frame.outChat, text);

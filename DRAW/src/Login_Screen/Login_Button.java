@@ -52,6 +52,7 @@ public class Login_Button extends Default_Button_Event {
 			String awnser = Default_Frame.inData.readUTF();
 			if (awnser.equals("LoginAccept")) { // 로그인 성공
 				AccessServer.AccessRoomChat();
+				Util.ChatThread CT = new Util.ChatThread();
 				Lobby_RoomInfo LR = new Lobby_RoomInfo();
 				DF.getContentPane().removeAll();
 				DF.add(new Lobby_Background(DF));

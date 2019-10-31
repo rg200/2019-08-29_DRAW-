@@ -2,6 +2,7 @@ package Login_Screen;
 
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
@@ -26,20 +27,26 @@ public class Login_Back_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOGIN_BACK_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ð¾çÀ¸·Î
+		setIcon(LOGIN_BACK_ENTER);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOGIN_BACK);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(LOGIN_BACK);// ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		try {
+			Default_Frame.outData.writeUTF("System");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		DF.getContentPane().removeAll();
-		DF.add(new Select_Background(DF));//Select_Background ÆÐ³Î ºÒ·¯¿È 
+		DF.add(new Select_Background(DF));//Select_Background ï¿½Ð³ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ 
 		DF.revalidate();
 	}
 }
