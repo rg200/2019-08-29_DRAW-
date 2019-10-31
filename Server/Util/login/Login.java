@@ -9,6 +9,7 @@ import character.GameCharacter;
 import common.Access;
 import common.Receive;
 import lobby.Channel;
+import lobby.UserInfo;
 public class Login implements Runnable {           
 // 사용자가 접속하여 로그인
 	private Socket userInfo; // 처음엔 로그인 -> 유저&친구정보 소켓
@@ -39,10 +40,19 @@ public class Login implements Runnable {
 	
 	public void run() {
 		// TODO 자동 생성된 메소드 스텁
-		while(true) {
+		while(!Thread.currentThread().isInterrupted()) {
 			Login_Receive_Data = Receive.ReceiveData(inData);
-			if(Login_Receive_Data.startsWith("System"))
-				break; // 로그인화면에서 뒤로가기 신호가 왔을 때
+			if(Login_Receive_Data.startsWith("System")) {
+				try {
+					inData.close();
+				    outData.close();
+				    userInfo.close();
+				} catch (IOException e) {
+					// TODO 자동 생성된 catch 블록
+					e.printStackTrace();
+				}
+				break;
+			}// 로그인화면에서 뒤로가기 신호가 왔을 때
 			else {
 			String[] words = Login_Receive_Data.split(":"); // 아이디:패스워드로 오는 문장 처리
 			System.out.println(words[0]+words[1]); //확인용 나중에 지움
@@ -60,6 +70,8 @@ public class Login implements Runnable {
 				new Channel(user, channel_Select);
 				makeChat_RoomInfo(user,channel_Select);
 				
+				new Thread(new UserInfo(user)).start();
+				Thread.currentThread().interrupt();
 				
 				//채널은 원래 유저가 선택해야 하지만, 지금 채널선택이 없어서 디폴트로 0 을 가져온다.
 			}
@@ -67,13 +79,13 @@ public class Login implements Runnable {
 				common.Send.sendData(outData, "LoginFailed");
 			}
 		}
-		try {
+		/*try {
 			inData.close();
 		    outData.close();
 		    userInfo.close();
 		} catch (IOException e) {
 			// TODO 자동 생성된 catch 블록
 			e.printStackTrace();
-		}
+		}*/
 	}
 }

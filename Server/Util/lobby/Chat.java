@@ -33,17 +33,19 @@ public class Chat implements Runnable {
 			// TODO 자동 생성된 catch 블록
 			e.printStackTrace();
 		}
-		common.Send.sendData(outChat, "접속하신걸 환영합니다.");
+		//common.Send.sendData(outChat, "접속하신걸 환영합니다.");
 	}
 
 	public void run() {
-		while(true) {
+		while(!Thread.currentThread().isInterrupted()) {
 			ChatText = Receive.ReceiveData(inChat);
-			if(ChatText.startsWith("/w"));
+			if(ChatText.equals("Error"))
+				Thread.currentThread().interrupt();
+			else if(ChatText.startsWith("/w"));
 			else {
 				ChatText = user.getNickName() +":"+ ChatText;
-				user_room = Channel.getRoom(user.getChannelNumber(), user.getRoomNumber());
-				user_room_cli = user_room.getArrayList();
+				user_room = Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()); // 채널과 방번호로 룸 클래스 받아옴
+				user_room_cli = user_room.getArrayList(); // 받아온 룸 클래스로 접속자 어레이 리스트를 받아옴 
 				System.out.println(ChatText);
 				Send.sendAll(ChatText,user_room_cli);
 			}

@@ -1,5 +1,8 @@
 package character;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 public class Character{	
@@ -30,23 +33,38 @@ public class Character{
 	public Socket getUserInfo() {
 		return userInfo;
 	}
-
+	public DataInputStream getUserIn() throws IOException {
+		return new DataInputStream(userInfo.getInputStream());
+	}
+	public DataOutputStream getUserOut() throws IOException {
+		return new DataOutputStream(userInfo.getOutputStream());
+	}
+	
+	
 	public Socket getChat() {
 		return chat;
 	}
-
-	public void setChat(Socket chat) {
-		this.chat = chat;
+	public DataInputStream getChatIn() throws IOException {
+		return new DataInputStream(chat.getInputStream());
+	}
+	public DataOutputStream getChatOut() throws IOException {
+		return new DataOutputStream(chat.getOutputStream());
 	}
 
+
+	
 	public Socket getRoomInfo() {
 		return roomInfo;
 	}
-
-	public void setRoomInfo(Socket roomInfo) {
-		this.roomInfo = roomInfo;
+	public DataInputStream getRoomIn() throws IOException {
+		return new DataInputStream(roomInfo.getInputStream());
 	}
+	public DataOutputStream getRoomOut() throws IOException {
+		return new DataOutputStream(roomInfo.getOutputStream());
+	}
+	
 
+	
 	public int getRoomNumber() {
 		return roomNumber;
 	}
@@ -54,6 +72,7 @@ public class Character{
 	public void setRoomNumber(int roomNumber) {
 		this.roomNumber = roomNumber;
 	}
+	
 	
 	public int getChannelNumber() {
 		return channelNumber;

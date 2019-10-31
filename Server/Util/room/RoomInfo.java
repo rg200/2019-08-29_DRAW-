@@ -61,7 +61,7 @@ public class RoomInfo implements Runnable {
 				removeRoom();
 				break;
 			default:
-				return;
+				Thread.currentThread().interrupt();
 			} 
 		}
 	}
