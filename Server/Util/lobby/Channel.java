@@ -14,8 +14,7 @@ public class Channel {
 	
 	private Map<Integer, Room>Rooms = Collections.synchronizedMap(new HashMap<>()); 
 //	방 정보를 만들거나 받아오는 Room Map
-	
-	Room room;
+	private Room room;
 	
 	public Channel(GameCharacter character,int channelNumber){
 		if(this.Channels.containsKey(channelNumber)) {

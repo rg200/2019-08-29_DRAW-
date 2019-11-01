@@ -7,6 +7,8 @@ import java.net.Socket;
 
 import character.GameCharacter;
 import common.Access;
+import common.Disconnect_Socket;
+import common.Option;
 import common.Receive;
 import lobby.Channel;
 import lobby.UserInfo;
@@ -34,23 +36,22 @@ public class Login implements Runnable {
 	}
 
 	public void makeChat_RoomInfo(GameCharacter user, int Channel) {
+		System.out.println("실행됨");
 		new Thread(new lobby.Chat(user)).start();
-		new Thread(new room.RoomInfo(user,Channel)).start();
+		new Thread(new room.RoomInfo(user)).start();
+		new Thread(new UserInfo(user)).start();
 	}
 	
 	public void run() {
-		// TODO 자동 생성된 메소드 스텁
-		while(!Thread.currentThread().isInterrupted()) {
+
+		while(true) {
 			Login_Receive_Data = Receive.ReceiveData(inData);
 			if(Login_Receive_Data.startsWith("System")) {
-				try {
-					inData.close();
-				    outData.close();
-				    userInfo.close();
-				} catch (IOException e) {
-					// TODO 자동 생성된 catch 블록
-					e.printStackTrace();
-				}
+		
+				Disconnect_Socket.DisconnectStream(inData);
+			    Disconnect_Socket.DisconnectStream(outData);
+			    Disconnect_Socket.Disconnect(userInfo);
+			    System.out.println("여기 실행됨");
 				break;
 			}// 로그인화면에서 뒤로가기 신호가 왔을 때
 			else {
@@ -62,16 +63,16 @@ public class Login implements Runnable {
 				
 				channel_Select = 0;
 				//channel_Select = Receive.ReceiveInt(inData);
-				//	채널 선택
+				// 채널 선택
 				
 				GameCharacter user = new GameCharacter(words[0], userInfo,Access.startChat(),Access.startRoomInfo(), channel_Select); 
 				// 로그인 성공시 유저 정보를 담는 캐릭터 객체 & 채널객체 생성 
 				
 				new Channel(user, channel_Select);
+				Option.Stop = true;
 				makeChat_RoomInfo(user,channel_Select);
-				
-				new Thread(new UserInfo(user)).start();
-				Thread.currentThread().interrupt();
+
+				break;
 				
 				//채널은 원래 유저가 선택해야 하지만, 지금 채널선택이 없어서 디폴트로 0 을 가져온다.
 			}
@@ -79,13 +80,5 @@ public class Login implements Runnable {
 				common.Send.sendData(outData, "LoginFailed");
 			}
 		}
-		/*try {
-			inData.close();
-		    outData.close();
-		    userInfo.close();
-		} catch (IOException e) {
-			// TODO 자동 생성된 catch 블록
-			e.printStackTrace();
-		}*/
 	}
 }

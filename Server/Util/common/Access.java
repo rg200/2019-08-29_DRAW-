@@ -38,6 +38,7 @@ public class Access {
 		
 		try {
 			Chat = ChatServer.accept();
+			System.out.println("통신됨");
 		}catch (IOException e) {
 			System.out.println("채팅 쓰레드 생성부분에서 예외 발생");
 		}
@@ -51,6 +52,7 @@ public class Access {
 		
 		try {
 			RoomInfo = RoomInfoServer.accept();
+			System.out.println("통신됨");
 		} catch (IOException e) {
 			System.out.println("롬정보 쓰레드 생성부분에서 예외 발생");
 		}
