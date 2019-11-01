@@ -84,8 +84,8 @@ public class Lobby_Background extends JPanel {
 		CB.setVisible(Select1);
 	}
 
-	public static void AddPlaylistButton(String st) {
-		PL.add(new PlayList_Button(st));
+	public static void AddPlaylistButton(String roomName, int roomNum, Default_Frame DF) {
+		PL.add(new PlayList_Button(roomName,roomNum,DF));
 		PL.revalidate();
 	}
 	public void paintComponent(Graphics g) {

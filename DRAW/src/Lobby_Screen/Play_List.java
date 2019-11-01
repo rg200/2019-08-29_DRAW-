@@ -6,17 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-public class Play_List extends JPanel implements ActionListener {
+public class Play_List extends JPanel {
 	
 	public Play_List() {
 		setLayout(new FlowLayout(FlowLayout.LEFT)); 
 		setOpaque(false);
-		setBounds(57, 260, 1110, 480);
-		
+		setBounds(57, 260, 1110, 480);	
 	}
-	
-	public void actionPerformed(ActionEvent evt) {
-		
-	}
-
 }

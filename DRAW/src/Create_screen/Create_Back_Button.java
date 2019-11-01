@@ -14,7 +14,6 @@ public class Create_Back_Button extends Default_Button_Event{
 	private ImageIcon CREATE_BACK_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_IN.png"));
 	private ImageIcon CREATE_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_ENTER.png"));
 	private Lobby_Background LB;
-	private Default_Frame DF;
 	
 	public Create_Back_Button(ImageIcon icon, Lobby_Background LB) {
 		this.LB = LB;
