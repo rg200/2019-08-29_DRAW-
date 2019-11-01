@@ -8,33 +8,43 @@ import lobby.Channel;
 public class Room  {
 	// 방 클래스
 	public static int roomNum = 1;
-	private ArrayList<GameCharacter> clients = new ArrayList<GameCharacter>();
+	private ArrayList<GameCharacter> users = new ArrayList<GameCharacter>();
 //	방 안에 있는 유저정보
 	private int roomNumber;
 	private String roomName;
 	
-	public Room(String roomName, GameCharacter client) {
+	public Room(String roomName, GameCharacter user) {
 
 		roomNumber = roomNum-1;
 		this.roomName = roomName;
-		clients.add(client);
-		client.setRoomNumber(roomNumber);
+		users.add(user);
+		user.setRoomNumber(roomNumber);
 	}
 	
-	public void addUser(GameCharacter client) {
+	public void addUser(GameCharacter user) {
 //	방에 유저 접속
-		clients.add(client);
-		client.setRoomNumber(roomNumber);
+		users.add(user);
+		user.setRoomNumber(roomNumber);
 	}
 	
-	public int removeUser(GameCharacter client) {
-		clients.remove(client);
-		Channel.getRoom(client.getChannelNumber(), 0).addUser(client);
-		return clients.size();
+	public void removeUser(GameCharacter user) {
+			Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()).getArrayList().remove(user);
+		}
+	
+	public int backUser(GameCharacter user) {
+		removeUser(user);
+		Channel.getRoom(user.getChannelNumber(), 0).addUser(user);
+		user.setRoomNumber(0);
+		
+		return users.size();
 	}
 	
 	public int getRoomSize() {
-		return clients.size();
+		return users.size();
+	}
+	
+	public int getRoomNumber() {
+		return roomNumber;
 	}
 	
 	public String getRoomName() {
@@ -42,6 +52,6 @@ public class Room  {
 	//	방 제목을 받아옴
 	}
 	public ArrayList<GameCharacter> getArrayList() {
-		return clients;
+		return users;
 	}
 }

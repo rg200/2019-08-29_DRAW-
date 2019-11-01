@@ -39,7 +39,6 @@ public class Chat implements Runnable {
 
 	public void run() {
 		while(Option.Stop) {
-			System.out.println("대기중!");
 			ChatText = Receive.ReceiveData(inChat);
 
 			if(ChatText.startsWith("/w"));

@@ -30,14 +30,12 @@ public class RoomInfo implements Runnable {
 		}
 	}
 	public void run() {
-
-		System.out.println("쓰레드 열림");
 		
 		roomUpdate(channel);
 		//	최초 유저의 로비에 방목록을 뿌려줌
 		
 		while(Option.Stop) {
-			
+			System.out.println("반복중");
 			switch(Receive.ReceiveData(request)) {
 		//	클라이언트로부터 방 생성 및 방 접속 신호를 받아옴
 			case "Create":
@@ -52,10 +50,6 @@ public class RoomInfo implements Runnable {
 			case "reload":
 				roomUpdate(channel);
 				break;
-				
-			case "exit":
-				removeRoom();
-				break;
 			}
 		}
 	}
@@ -63,11 +57,13 @@ public class RoomInfo implements Runnable {
 	public void createRoom() {
 	//	방 생성
 		String roomName = Receive.ReceiveData(request);
+		Channel.getRoom(channel,user.getRoomNumber()).removeUser(user);
 		Channel.getRooms(channel).put(Room.roomNum++, new Room(roomName, user));
 	}
 	
 	public void joinRoom(int roomNum) {
 	//	방 접속
+		Channel.getRoom(channel,user.getRoomNumber()).removeUser(user);
 		Channel.getRoom(channel,roomNum).addUser(user);
 	}
 	
@@ -75,18 +71,16 @@ public class RoomInfo implements Runnable {
 	//	방 새로고침
 		
 		int roomNum = Channel.getRooms(channel).size();
-		System.out.println(roomNum);
+
 		for(int i = 1; i < roomNum; i++) {
 			
+			Send.sendData(response, Channel.getRoom(channel,i).getRoomNumber());
 			Send.sendData(response, Channel.getRoom(channel,i).getRoomName());
-
-			System.out.println(Channel.getRoom(channel,i).getRoomName());
 		}
 	}
 	
 	public void removeRoom() {
-		
-		if(Channel.getRoom(channel,user.getRoomNumber()).removeUser(user) == 0) {
+		if(!Channel.getRoom(channel,user.getRoomNumber()).getRoomName().equals("lobby") && Channel.getRoom(channel,user.getRoomNumber()).backUser(user) == 0) {
 			Channel.getRooms(channel).remove(user.getRoomNumber());
 		}
 	}

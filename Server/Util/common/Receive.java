@@ -9,12 +9,9 @@ public class Receive {
 	
 	public static String ReceiveData(DataInputStream inData)  {
 		try {
-			System.out.println("받음");
-			return inData.readUTF();
-			
-		} catch (IOException e) {
-			System.out.println("발생");
 		
+			return inData.readUTF();
+		} catch (IOException e) {
 			return "Error";
 		//	통신이 갑자기 꺼질 경우 return
 		} 

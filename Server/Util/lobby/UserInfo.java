@@ -17,7 +17,7 @@ public class UserInfo implements Runnable {
 	public void run() {
 		while(true) {
 			try {
-				System.out.println("대기중 2!");
+
 				String UserInfoData = Receive.ReceiveData(user.getUserIn());
 				if(UserInfoData.equals("Logout")) {
 					Send.sendData(user.getChatOut(), UserInfoData);
@@ -25,7 +25,7 @@ public class UserInfo implements Runnable {
 					
 					Disconnect_Socket.Disconnect(user.getChat());
 					Disconnect_Socket.Disconnect(user.getRoomInfo());
-					System.out.println("통신 끝");
+
 					
 					Option.Stop = false;
 					break;

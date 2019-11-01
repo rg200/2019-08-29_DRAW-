@@ -36,7 +36,6 @@ public class Login implements Runnable {
 	}
 
 	public void makeChat_RoomInfo(GameCharacter user, int Channel) {
-		System.out.println("실행됨");
 		new Thread(new lobby.Chat(user)).start();
 		new Thread(new room.RoomInfo(user)).start();
 		new Thread(new UserInfo(user)).start();
@@ -51,14 +50,12 @@ public class Login implements Runnable {
 				Disconnect_Socket.DisconnectStream(inData);
 			    Disconnect_Socket.DisconnectStream(outData);
 			    Disconnect_Socket.Disconnect(userInfo);
-			    System.out.println("여기 실행됨");
 				break;
 			}// 로그인화면에서 뒤로가기 신호가 왔을 때
 			else {
 			String[] words = Login_Receive_Data.split(":"); // 아이디:패스워드로 오는 문장 처리
 			System.out.println(words[0]+words[1]); //확인용 나중에 지움
 			if(words[0].equals(ID) && words[1].equals(PASS)) { // 비교
-				System.out.println("유저 로그인 성공");
 				common.Send.sendData(outData, "LoginAccept");
 				
 				channel_Select = 0;

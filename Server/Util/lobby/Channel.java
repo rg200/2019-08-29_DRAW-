@@ -21,14 +21,14 @@ public class Channel {
 	//	유저가 선택한 Channels이 비어있는지 확인
 			Rooms = this.Channels.get(channelNumber);
 			Rooms.get(0).addUser(character);
-			System.out.println("채널에 퐁당~");
+
 	// 	비어 있지 않다면 0번방(로비)에 유저를 추가
 		}else {
 	//	비어 있다면
 			room = new Room("lobby", character);
 			Rooms.put(0, room);
 			this.Channels.put(channelNumber, Rooms);
-			System.out.println("채널을 추가~");
+
 	//	0번 방을 만들어 Channels에 저장
 		}
 	}
