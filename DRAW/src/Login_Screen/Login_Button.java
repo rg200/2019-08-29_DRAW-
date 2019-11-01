@@ -32,14 +32,14 @@ public class Login_Button extends Default_Button_Event {
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOGIN_ENTER);//占쏙옙占쏙옙占쏙옙占� 占쌕뀐옙
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// 커占쏙옙占쏙옙 占쌌곤옙占쏙옙 占쏙옙占쏙옙占쏙옙占�
+		setIcon(LOGIN_ENTER);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOGIN_IN);// 占쌕쏙옙 占쏙옙占쏙옙占승뤄옙
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// 커占쏙옙占쏙옙 占썩본占쏙옙占쏙옙
+		setIcon(LOGIN_IN);
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		
 		
 	}
@@ -48,6 +48,8 @@ public class Login_Button extends Default_Button_Event {
 	public void mousePressed(MouseEvent e) {
 		try {
 			Default_Frame.outData.writeUTF(Login_Background.ID_TextField.getText() + ":" + Login_Background.PW_TextField.getText());
+			Login_Background.ID_TextField.setText("");
+			Login_Background.PW_TextField.setText("");
 			System.out.println("ID PASS 일치");
 			String awnser = Default_Frame.inData.readUTF();
 			if (awnser.equals("LoginAccept")) { // 로그인 성공
@@ -61,7 +63,6 @@ public class Login_Button extends Default_Button_Event {
 				// 로그인 실패
 				System.out.println("로그인 실패");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

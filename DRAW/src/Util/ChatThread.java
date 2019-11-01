@@ -7,9 +7,11 @@ import Default.Default_Frame;
 
 public class ChatThread implements Runnable {
 	private static JTextArea Chat_TextArea;
+	private String text;
 	
 	public ChatThread() {
 		new Thread(this).start();
+		this.text = null;
 	}
 	
 	public static void SetTextArea(JTextArea TA) {
@@ -19,14 +21,12 @@ public class ChatThread implements Runnable {
 	
 	public void run() {
 		while(!Thread.currentThread().isInterrupted()) {
-			System.out.println(Thread.currentThread().isInterrupted());
-			String text = null;
+
+			
 			text = ReceiveServer.ReceiveData(Default_Frame.inChat);
-			System.out.println(text);
 			if(text.equals("Logout")) {
-				return;
+				break;
 			}
-			System.out.println("꺼꺼짐");
 			Chat_TextArea.append(text + "\n");
 			Chat_TextArea.setCaretPosition(Chat_TextArea.getDocument().getLength());
 			

@@ -4,7 +4,7 @@ import Default.Default_Frame;
 import Util.ReceiveServer;
 
 public class Lobby_RoomInfo implements Runnable{
-//	�� ������ �޾ƿ��� ������
+//	방 정보를 받아옴
 	public Lobby_RoomInfo() {
 		new Thread(this).start();
 	}
@@ -12,15 +12,13 @@ public class Lobby_RoomInfo implements Runnable{
 	@Override
 	public void run() {
 
-		while(!Thread.currentThread().isInterrupted()) {
+		while(true) {
 			String st = ReceiveServer.ReceiveData(Default_Frame.inRoomInfo);
-			/*if(st.equals("Logout")) {
-				Thread.currentThread().interrupt();
-			}*/
-			System.out.println("�޾ƿ�");
-			Lobby_Background.AddPlaylistButton(st);
+			if(st.equals("Logout")) 
+				break;
+			else 
+				Lobby_Background.AddPlaylistButton(st);
 			
 		}
-		//System.out.println("shutDouwn");
 	}
 }

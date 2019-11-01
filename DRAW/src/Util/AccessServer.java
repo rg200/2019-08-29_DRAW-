@@ -10,16 +10,16 @@ import java.net.UnknownHostException;
 import Default.Default_Frame;
 
 public class AccessServer {
-	// ¼­¹ö¶û ¼ÒÄÏ ¿¬°á Å¬·¡½º
+	//  ï¿½ê½Œè¸°ê¾©ë¿‰ ï¿½ì ’ï¿½ëƒ½ï¿½ë¸¯æ¹²ï¿½ ï¿½ìï¿½ë¹ ï¿½ê¶—ï¿½ìŠœ
 	
 	public static void AccessUserInfo() {
 		try {
 			Default_Frame.clientSocket = new Socket(InetAddress.getByName("127.0.0.1"), 9000);
 			Default_Frame.outData = new DataOutputStream(Default_Frame.clientSocket.getOutputStream());
 			Default_Frame.inData = new DataInputStream(Default_Frame.clientSocket.getInputStream());
-			System.out.println("³×Æ®¿öÅ© ¿¬°á ¼º°ø");
 		} catch (UnknownHostException e) {
-			System.err.println("ÁÖ¼Ò°¡ Àß¸ø µÇ¾ú½À´Ï´Ù..");
+
+			e.printStackTrace();
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to the host ");
 		}
@@ -30,9 +30,10 @@ public class AccessServer {
 			Default_Frame.Chat = new Socket(InetAddress.getByName("127.0.0.1"), 9001);
 			Default_Frame.outChat = new DataOutputStream(Default_Frame.Chat.getOutputStream());
 			Default_Frame.inChat = new DataInputStream(Default_Frame.Chat.getInputStream());
-			System.out.println("³×Æ®¿öÅ© ¿¬°á ¼º°ø");
+			System.out.println("ì‹¤í–‰ë¨");
 		} catch (UnknownHostException e) {
-			System.err.println("ÁÖ¼Ò°¡ Àß¸ø µÇ¾ú½À´Ï´Ù..");
+			System.out.println("ì—¬ê¸° ì‹¤í–‰ë¨");
+			e.printStackTrace();
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to the host ");
 		}
@@ -41,9 +42,10 @@ public class AccessServer {
 			Default_Frame.RoomInfo = new Socket(InetAddress.getByName("127.0.0.1"), 9002);
 			Default_Frame.outRoomInfo = new DataOutputStream(Default_Frame.RoomInfo.getOutputStream());
 			Default_Frame.inRoomInfo = new DataInputStream(Default_Frame.RoomInfo.getInputStream());
-			System.out.println("³×Æ®¿öÅ© ¿¬°á ¼º°ø");
+			System.out.println("ì‹¤í–‰ë¨");
 		} catch (UnknownHostException e) {
-			System.err.println("ÁÖ¼Ò°¡ Àß¸ø µÇ¾ú½À´Ï´Ù..");
+			System.out.println("ì—¬ê¸° ì‹¤í–‰ë¨");
+			e.printStackTrace();
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to the host ");
 		}

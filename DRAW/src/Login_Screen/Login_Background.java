@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Default.Default_Frame;
@@ -30,13 +31,13 @@ public class Login_Background extends JPanel{
 	private ImageIcon LOGIN_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_ENTER.png"));
 	private Default_Frame DF;
 	public static JTextField ID_TextField = new JTextField(); // 아이디 받아오기 위해 수정 private -> public static
-	public static JTextField PW_TextField = new JTextField(); // 패스워드 받아오기 위해 수정 private -> public static
+	public static JPasswordField PW_TextField = new JPasswordField(); // 패스워드 받아오기 위해 수정 private -> public static
 	private Login_Back_Button LBB;
 	private Login_Button LB;
 	
 	public Login_Background(Default_Frame DF) {
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);
 		setLayout(null); 
 		LBB = new Login_Back_Button(LOGIN_BACK, DF);
 		LB = new Login_Button(LOGIN_IN, DF);

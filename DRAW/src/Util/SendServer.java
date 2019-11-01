@@ -7,8 +7,9 @@ public class SendServer {
 	public static void SendData(DataOutputStream out, String data) {
 		try {
 			out.writeUTF(data);
+			System.out.println("전송함");
 		} catch (IOException e) {
-			// TODO 자동 생성된 catch 블록
+
 			e.printStackTrace();
 		}
 	}
@@ -17,7 +18,7 @@ public class SendServer {
 		try {
 			out.writeInt(data);
 		} catch (IOException e) {
-			// TODO 자동 생성된 catch 블록
+
 			e.printStackTrace();
 		}
 	}

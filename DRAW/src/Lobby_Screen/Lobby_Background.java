@@ -60,14 +60,14 @@ public class Lobby_Background extends JPanel {
 		PL = new Play_List();
 		
 		add(LJB);	// join ��ư �߰� 
-		add(LBB);	// back ��ư 
-		add(LC);	
+		add(LBB);	// back ��ư 	
 		add(LAB);
 		add(AB);
 		add(CB);
 		add(LRB);
 		add(LCB);
 		add(PL);
+		add(LC);
 		
 		CB.setVisible(false);
 		AB.setVisible(false);
@@ -86,7 +86,7 @@ public class Lobby_Background extends JPanel {
 
 	public static void AddPlaylistButton(String st) {
 		PL.add(new PlayList_Button(st));
-		System.out.println("����");
+		PL.revalidate();
 	}
 	public void paintComponent(Graphics g) {
 		g.drawImage(Lob_Background, 0, 0, this.getWidth(), this.getHeight(), this);

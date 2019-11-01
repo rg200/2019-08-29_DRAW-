@@ -43,6 +43,5 @@ public class Lobby_Refresh_Button extends Default_Button_Event{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		SendServer.SendData(Default_Frame.outRoomInfo, "reload");
-		Lobby_Background.PL.revalidate();
 	}
 }
