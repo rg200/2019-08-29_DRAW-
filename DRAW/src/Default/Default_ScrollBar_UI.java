@@ -9,9 +9,10 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 
 
 public class Default_ScrollBar_UI extends BasicScrollBarUI {
+	// ì±„íŒ…ì˜ ìŠ¤í¬ë¡¤ë°”ì˜ UIë¥¼ ë°”ê¾¸ëŠ” 
 	/*
-	 * (non-Javadoc) ScrollBar ¸¦ ±¸¼ºÇÒ¶§ÀÇ »ö»óÀ» ÁöÁ¤, thumbRect¿Í trackRect °ú °°Àº ÇÊµå´Â api ¸¦
-	 * ÂüÁ¶ÇÏ¸é ±×¸²°ú ÇÔ²² ¾î´À°ÍÀÎÁö ÀÚ¼¼ÇÏ°Ô ³ª¿Â´Ù.
+	 * (non-Javadoc) ScrollBar ë¥¼ êµ¬ì„±í• ë•Œì˜ ìƒ‰ìƒì„ ì§€ì •, thumbRectì™€ trackRect ê³¼ ê°™ì€ í•„ë“œëŠ” api ë¥¼
+	 * ì°¸ì¡°í•˜ë©´ ê·¸ë¦¼ê³¼ í•¨ê»˜ ì–´ëŠê²ƒì¸ì§€ ìì„¸í•˜ê²Œ ë‚˜ì˜¨ë‹¤.
 	 * 
 	 * @see javax.swing.plaf.basic.BasicScrollBarUI#configureScrollBarColors()
 	 */
@@ -30,7 +31,7 @@ public class Default_ScrollBar_UI extends BasicScrollBarUI {
 	}
 
 	/*
-	 * (non-Javadoc) ScrollBar »ó´Ü¿¡ È­»ìÇ¥ ¸ğ¾çÀÇ ¹öÆ° »ö»ó ÁöÁ¤
+	 * (non-Javadoc) ScrollBar ìƒë‹¨ì— í™”ì‚´í‘œ ëª¨ì–‘ì˜ ë²„íŠ¼ ìƒ‰ìƒ ì§€ì •
 	 * 
 	 * @see javax.swing.plaf.basic.BasicScrollBarUI#createDecreaseButton(int)
 	 */
@@ -42,7 +43,7 @@ public class Default_ScrollBar_UI extends BasicScrollBarUI {
 	}
 
 	/*
-	 * (non-Javadoc) ScrollBar ÇÏ´Ü¿¡ È­»ìÇ¥ ¸ğ¾çÀÇ ¹öÆ° »ö»ó ÁöÁ¤
+	 * (non-Javadoc) ScrollBar í•˜ë‹¨ì— í™”ì‚´í‘œ ëª¨ì–‘ì˜ ë²„íŠ¼ ìƒ‰ìƒ ì§€ì •
 	 * 
 	 * @see javax.swing.plaf.basic.BasicScrollBarUI#createIncreaseButton(int)
 	 */
