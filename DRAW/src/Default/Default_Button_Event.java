@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import Select_Screen.Select_Background;
 
 public class Default_Button_Event extends JButton implements MouseListener, MouseMotionListener, ActionListener{
-
+	// 버튼들의 상속받는 클래스 여기서 이렇게 다 설정해두면 버튼에서 필요한것만 골라서 설정할수 있음
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
