@@ -13,7 +13,7 @@ import Util.ReceiveServer;
 import Util.SendServer;
 
 public class Lobby_Refresh_Button extends Default_Button_Event{
-	
+	// ë¡œë¹„ì˜ ë°©ëª©ë¡ì„ ìƒˆë¡œê³ ì¹¨ í•´ì£¼ëŠ” ë²„íŠ¼ 
 	private ImageIcon REFRESH_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_REFRESH_BUTTON.png"));
 	private ImageIcon REFRESH_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_REFRESH_BUTTON_ENTER.png"));
 	private Default_Frame DF;
@@ -30,14 +30,14 @@ public class Lobby_Refresh_Button extends Default_Button_Event{
 	}
 	
 	public void mouseEntered(MouseEvent e) {
-		setIcon(REFRESH_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(REFRESH_ENTER);//í°ìƒ‰ìœ¼ë¡œ ë°”ë€œ
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// ì»¤ì„œê°€ ì†ê°€ë½ ëª¨ì–‘ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(REFRESH_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(REFRESH_IN);// ë‹¤ì‹œ ì›ìƒíƒœë¡œ
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// ì»¤ì„œê°€ ê¸°ë³¸ìœ¼ë¡œ
 	}
 
 	@Override
