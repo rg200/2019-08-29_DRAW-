@@ -1,6 +1,7 @@
 package Lobby_Screen;
 
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Util.ReceiveServer;
 
 public class Lobby_RoomInfo implements Runnable{
@@ -16,8 +17,8 @@ public class Lobby_RoomInfo implements Runnable{
 	public void run() {
 
 		while(true) {
-			int roomNum = ReceiveServer.ReceiveInt(Default_Frame.inRoomInfo);
-			String roomName = ReceiveServer.ReceiveData(Default_Frame.inRoomInfo);
+			int roomNum = ReceiveServer.ReceiveInt(Default_Socket.getInRoomInfo());
+			String roomName = ReceiveServer.ReceiveData(Default_Socket.getInRoomInfo());
 			if(roomName.equals("Logout")) 
 				break;
 			else 

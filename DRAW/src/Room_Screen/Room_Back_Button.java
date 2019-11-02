@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Lobby_Screen.Lobby_Background;
 import Main_Screen.Main_Background;
 import Util.SendServer;
@@ -40,7 +41,7 @@ public class Room_Back_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		SendServer.SendData(Default_Frame.outRoomInfo, "back");
+		SendServer.SendData(Default_Socket.getOutRoomInfo(), "back");
 		
 		DF.getContentPane().removeAll();
 		DF.add(new Lobby_Background(DF));//Select_Background

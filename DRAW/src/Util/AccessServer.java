@@ -8,15 +8,16 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import Default.Default_Frame;
+import Default.Default_Socket;
 
 public class AccessServer {
 	//  �꽌踰꾩뿉 �젒�냽�븯湲� �쐞�빐 �궗�슜
 	
 	public static void AccessUserInfo() {
 		try {
-			Default_Frame.clientSocket = new Socket(InetAddress.getByName("127.0.0.1"), 9000);
-			Default_Frame.outData = new DataOutputStream(Default_Frame.clientSocket.getOutputStream());
-			Default_Frame.inData = new DataInputStream(Default_Frame.clientSocket.getInputStream());
+			Default_Socket.setClientSocket(new Socket(InetAddress.getByName("127.0.0.1"), 9000));
+			Default_Socket.setOutData(new DataOutputStream(Default_Socket.getClientSocket().getOutputStream()));
+			Default_Socket.setInData(new DataInputStream(Default_Socket.getClientSocket().getInputStream()));
 		} catch (UnknownHostException e) {
 
 			e.printStackTrace();
@@ -27,9 +28,9 @@ public class AccessServer {
 	
 	public static void AccessRoomChat() {
 		try {
-			Default_Frame.Chat = new Socket(InetAddress.getByName("127.0.0.1"), 9001);
-			Default_Frame.outChat = new DataOutputStream(Default_Frame.Chat.getOutputStream());
-			Default_Frame.inChat = new DataInputStream(Default_Frame.Chat.getInputStream());
+			Default_Socket.setChat(new Socket(InetAddress.getByName("127.0.0.1"), 9001));
+			Default_Socket.setOutChat(new DataOutputStream(Default_Socket.getChat().getOutputStream()));
+			Default_Socket.setInChat(new DataInputStream(Default_Socket.getChat().getInputStream())); 
 			System.out.println("실행됨");
 		} catch (UnknownHostException e) {
 			System.out.println("여기 실행됨");
@@ -39,9 +40,9 @@ public class AccessServer {
 		}
 		
 		try {
-			Default_Frame.RoomInfo = new Socket(InetAddress.getByName("127.0.0.1"), 9002);
-			Default_Frame.outRoomInfo = new DataOutputStream(Default_Frame.RoomInfo.getOutputStream());
-			Default_Frame.inRoomInfo = new DataInputStream(Default_Frame.RoomInfo.getInputStream());
+			Default_Socket.setRoomInfo(new Socket(InetAddress.getByName("127.0.0.1"), 9002));
+			Default_Socket.setOutRoomInfo(new DataOutputStream(Default_Socket.getRoomInfo().getOutputStream()));
+			Default_Socket.setInRoomInfo(new DataInputStream(Default_Socket.getRoomInfo().getInputStream())); 
 			System.out.println("실행됨");
 		} catch (UnknownHostException e) {
 			System.out.println("여기 실행됨");

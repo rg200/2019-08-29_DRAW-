@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Lobby_Screen.Lobby_Background;
 import Login_Screen.Login_Background;
 import Main_Screen.Main_Background;
@@ -44,9 +45,9 @@ public class Create_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		SendServer.SendData(Default_Frame.outRoomInfo, "Create");
+		SendServer.SendData(Default_Socket.getOutRoomInfo(), "Create");
 		
-		SendServer.SendData(Default_Frame.outRoomInfo, Create_Background.CREATE_TextField.getText());
+		SendServer.SendData(Default_Socket.getOutRoomInfo(), Create_Background.CREATE_TextField.getText());
 		
 		DF.getContentPane().removeAll();
 		DF.add(new Room_Background(DF));

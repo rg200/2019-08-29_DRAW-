@@ -1,4 +1,4 @@
-package Lobby_Screen;
+package Room_Screen;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,17 +12,18 @@ import javax.swing.JTextField;
 
 import Default.Default_Frame;
 import Default.Default_ScrollBar_UI;
+import Default.Default_Socket;
 import Util.SendServer;
 import Util.ReceiveServer;
 
-public class Lobby_Chat extends JPanel implements ActionListener {
+public class Room_Chat extends JPanel implements ActionListener {
 	// 로비화면의 채팅을 담당하는 패널 
 	private static String newline = "\n";
 	private JTextField Chat_TextField = new JTextField();
 	private JTextArea Chat_TextArea = new JTextArea();
 	private JScrollPane Chat_TextArea_Scroll = new JScrollPane(Chat_TextArea);
 
-	public Lobby_Chat() {
+	public Room_Chat() {
 		setLayout(null); 
 		setOpaque(false);
 		setBounds(50, 790, 1131, 200);
@@ -55,7 +56,7 @@ public class Lobby_Chat extends JPanel implements ActionListener {
 	
 	public void actionPerformed(ActionEvent evt) {
 		String text = Chat_TextField.getText();
-		SendServer.SendData(Default.Default_Socket.getOutChat(), text);
+		SendServer.SendData(Default_Socket.getOutChat(), text);
 		//Chat_TextArea.append(text + newline); //area �ʵ忡 ���� ���� �� 
 		Chat_TextField.selectAll();
 		//Chat_TextArea.setCaretPosition(Chat_TextArea.getDocument().getLength());// ���� �޾� ���̴� �� 

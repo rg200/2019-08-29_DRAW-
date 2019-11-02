@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Main_Screen.Main_Background;
 import Room_Screen.Room_Background;
 import Util.ReceiveServer;
@@ -42,6 +43,6 @@ public class Lobby_Refresh_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		SendServer.SendData(Default_Frame.outRoomInfo, "reload");
+		SendServer.SendData(Default_Socket.getOutRoomInfo(), "reload");
 	}
 }

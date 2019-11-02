@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Main_Screen.Main_Background;
 import Select_Screen.Select_Background;
 
@@ -41,7 +42,7 @@ public class Login_Back_Button extends Default_Button_Event{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		try {
-			Default_Frame.outData.writeUTF("System");
+			Default_Socket.getOutData().writeUTF("System");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

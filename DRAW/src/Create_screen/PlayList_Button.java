@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Lobby_Screen.Lobby_Background;
 import Main_Screen.Main_Background;
 import Room_Screen.Room_Background;
@@ -38,7 +39,8 @@ public class PlayList_Button extends Default_Button_Event{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		System.out.println("작동중");
-		SendServer.SendData(Default_Frame.outRoomInfo, roomNum);
+		SendServer.SendData(Default_Socket.getOutRoomInfo(), "Join");
+		SendServer.SendData(Default_Socket.getOutRoomInfo(), roomNum);
 		
 		DF.getContentPane().removeAll();
 		DF.add(new Room_Background(DF));

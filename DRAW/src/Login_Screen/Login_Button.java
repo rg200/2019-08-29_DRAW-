@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Lobby_Screen.Lobby_Background;
 import Lobby_Screen.Lobby_RoomInfo;
 import Main_Screen.Main_Background;
@@ -47,11 +48,11 @@ public class Login_Button extends Default_Button_Event {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		try {
-			Default_Frame.outData.writeUTF(Login_Background.ID_TextField.getText() + ":" + Login_Background.PW_TextField.getText());
+			Default_Socket.getOutData().writeUTF(Login_Background.ID_TextField.getText() + ":" + Login_Background.PW_TextField.getText());
 			Login_Background.ID_TextField.setText("");// id 값 초기화
 			Login_Background.PW_TextField.setText("");// pw 값 
 			System.out.println("ID PASS 일치");
-			String awnser = Default_Frame.inData.readUTF();
+			String awnser = Default_Socket.getInData().readUTF();
 			if (awnser.equals("LoginAccept")) { // 로그인 성공
 				DF.getContentPane().removeAll();
 				DF.add(new Lobby_Background(DF));

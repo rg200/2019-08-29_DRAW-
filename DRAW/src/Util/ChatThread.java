@@ -3,6 +3,7 @@ package Util;
 import javax.swing.JTextArea;
 
 import Default.Default_Frame;
+import Default.Default_Socket;
 
 
 public class ChatThread implements Runnable {
@@ -23,7 +24,7 @@ public class ChatThread implements Runnable {
 		while(!Thread.currentThread().isInterrupted()) {
 
 			
-			text = ReceiveServer.ReceiveData(Default_Frame.inChat);
+			text = ReceiveServer.ReceiveData(Default_Socket.getInChat());
 			if(text.equals("Logout")) {
 				break;
 			}

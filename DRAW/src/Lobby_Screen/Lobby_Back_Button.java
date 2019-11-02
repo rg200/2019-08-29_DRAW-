@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import Default.Default_Button_Event;
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Login_Screen.Login_Background;
 import Main_Screen.Main_Background;
 import Util.SendServer;
@@ -41,7 +42,7 @@ public class Lobby_Back_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		SendServer.SendData(Default_Frame.outData, "Logout");
+		SendServer.SendData(Default_Socket.getOutData(), "Logout");
 		
 		DF.getContentPane().removeAll();
 		DF.add(new Login_Background(DF)); 
