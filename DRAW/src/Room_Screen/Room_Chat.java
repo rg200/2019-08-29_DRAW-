@@ -39,11 +39,11 @@ public class Room_Chat extends JPanel implements ActionListener {
 		Chat_TextArea_Scroll.getVerticalScrollBar().setUI(new Default_ScrollBar_UI());// 스크롤 ui 
 		Chat_TextArea.setOpaque(false);
 		Chat_TextArea.setBorder(null);
-		Chat_TextArea.setFont(new Font("����", Font.BOLD, 18));
+		Chat_TextArea.setFont(new Font("굴림", Font.BOLD, 18));
 		Chat_TextArea.setEditable(false);
 		Chat_TextField.setBounds(0, 130, 1130, 65);
 		Chat_TextField.setBorder(null);
-		Chat_TextField.setFont(new Font("����", Font.BOLD, 50));
+		Chat_TextField.setFont(new Font("굴림", Font.BOLD, 50));
 		Chat_TextField.setOpaque(false);
 		Chat_TextField.requestFocus();
 		Chat_TextField.addActionListener(this);

@@ -1,29 +1,24 @@
 package Login_Screen;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Default.Default_Frame;
+import Default.Default_Socket;
 import Lobby_Screen.Lobby_Background;
+import Lobby_Screen.Lobby_RoomInfo;
 import Main_Screen.Main_Background;
-import Select_Screen.Select_Background;
 import Util.AccessServer;
 
-public class Login_Background extends JPanel{
+public class Login_Background extends JPanel implements KeyListener{
 	// 로그인 화면을 나타내는 클래스
 	private Image Log_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_SCREEN.png")).getImage();
 	private ImageIcon LOGIN_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_BACK.png"));
@@ -54,7 +49,7 @@ public class Login_Background extends JPanel{
 		PW_TextField.setBorder(null);
 		PW_TextField.setFont(new Font("Stencil",Font.HANGING_BASELINE,50));
 		PW_TextField.setOpaque(false);
-		
+		PW_TextField.addKeyListener(this);
 		setVisible(true);
 		
 		// 네트워크
@@ -63,11 +58,46 @@ public class Login_Background extends JPanel{
 
 		
 	}
+	public void keyPressed(KeyEvent e) { 
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			try {
+				Default_Socket.getOutData().writeUTF(Login_Background.ID_TextField.getText() + ":" + Login_Background.PW_TextField.getText());
+				Login_Background.ID_TextField.setText("");// id 값 초기화
+				Login_Background.PW_TextField.setText("");// pw 값 
+				System.out.println("ID PASS 일치");
+				String awnser = Default_Socket.getInData().readUTF();
+				if (awnser.equals("LoginAccept")) { // 로그인 성공
+					DF.getContentPane().removeAll();
+					DF.add(new Lobby_Background(DF));
+					DF.revalidate();
+					
+					AccessServer.AccessRoomChat();
+					Util.ChatThread CT = new Util.ChatThread();
+					Lobby_RoomInfo LR = new Lobby_RoomInfo(DF);
+				} else
+					// 로그인 실패
+					System.out.println("로그인 실패");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
 	
 	public void paintComponent(Graphics g) {
 
 		g.drawImage(Log_Background, 0, 0, this.getWidth(), this.getHeight(), this);
 
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -48,9 +48,10 @@ public class Create_Button extends Default_Button_Event{
 		SendServer.SendData(Default_Socket.getOutRoomInfo(), "Create");
 		
 		SendServer.SendData(Default_Socket.getOutRoomInfo(), Create_Background.CREATE_TextField.getText());
-		
+		Create_Background.CREATE_TextField.setText("");
 		DF.getContentPane().removeAll();
 		DF.add(new Room_Background(DF));
 		DF.repaint();
+		
 	}
 }

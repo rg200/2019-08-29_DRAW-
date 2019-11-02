@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import AddFriends_screen.AddFriends_Background;
 import Create_screen.Create_Background;
 import Create_screen.PlayList_Button;
+import Create_screen.PlayerList_screen;
 import Default.Default_Frame;
 import Default.Default_ScrollBar_UI;
 import Login_Screen.Login_Background;
@@ -45,6 +46,7 @@ public class Lobby_Background extends JPanel {
 	private Lobby_Refresh_Button LRB;
 	private Lobby_Create_Buttonn LCB;
 	private static Create_Background CB;
+	private static PlayerList_screen PLS;
 	
 	public Lobby_Background(Default_Frame DF) {
 		this.DF = DF;
@@ -52,13 +54,14 @@ public class Lobby_Background extends JPanel {
 		setLayout(null); 
 		LBB = new Lobby_Back_Button(LOBBY_BACK, DF);
 		LJB = new Lobby_Join_Button(LOBBY_IN, DF);
+		PL = new Play_List();
 		LAB = new Lobby_AddFriends_Button(ADDFREIDNS, this);
 		LRB = new Lobby_Refresh_Button(REFRESH_IN, DF);
 		LCB = new Lobby_Create_Buttonn(CREATE, this);
 		AB = new AddFriends_Background(DF);
 		CB = new Create_Background(DF);
-		LC = new Lobby_Chat();
-		PL = new Play_List();
+		LC = new Lobby_Chat();		
+		PLS = new PlayerList_screen();
 		
 		add(LJB);	
 		add(LBB);		
@@ -67,6 +70,7 @@ public class Lobby_Background extends JPanel {
 		add(CB);
 		add(LRB);
 		add(LCB);
+		add(PLS);
 		add(PL);
 		add(LC);
 		

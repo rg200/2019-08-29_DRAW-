@@ -38,7 +38,9 @@ public class Create_Back_Button extends Default_Button_Event{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		Create_Background.CREATE_TextField.setText("");
 		Lobby_Background.CreateSetvisible();
+		
 	}
 
 }
