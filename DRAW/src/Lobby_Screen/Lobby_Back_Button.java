@@ -12,7 +12,7 @@ import Main_Screen.Main_Background;
 import Util.SendServer;
 
 public class Lobby_Back_Button extends Default_Button_Event{
-
+	// 로비에서 로그인 버튼으로 돌아가는 버튼 
 	private ImageIcon LOBBY_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_BACK.png"));
 	private ImageIcon LOBBY_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_BACK_ENTER.png"));
 	private Default_Frame DF;
@@ -29,14 +29,14 @@ public class Lobby_Back_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOBBY_BACK_ENTER);//������� �ٲ�
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ŀ���� �հ��� �������
+		setIcon(LOBBY_BACK_ENTER);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOBBY_BACK);// �ٽ� �����·�
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ŀ���� �⺻����
+		setIcon(LOBBY_BACK);
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class Lobby_Back_Button extends Default_Button_Event{
 		SendServer.SendData(Default_Frame.outData, "Logout");
 		
 		DF.getContentPane().removeAll();
-		DF.add(new Login_Background(DF));//Select_Background �г� �ҷ��� 
+		DF.add(new Login_Background(DF)); 
 		DF.revalidate();
 	}
 }
