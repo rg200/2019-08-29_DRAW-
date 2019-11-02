@@ -15,7 +15,7 @@ import Main_Screen.Main_Background;
 import Util.AccessServer;
 
 public class Login_Button extends Default_Button_Event {
-	
+	// 로그인을 인식하고 로그인이 된다면 로비로 보내는 버튼 
 	private ImageIcon LOGIN_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_IN.png"));
 	private ImageIcon LOGIN_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_ENTER.png"));
 	private Default_Frame DF;
@@ -48,8 +48,8 @@ public class Login_Button extends Default_Button_Event {
 	public void mousePressed(MouseEvent e) {
 		try {
 			Default_Frame.outData.writeUTF(Login_Background.ID_TextField.getText() + ":" + Login_Background.PW_TextField.getText());
-			Login_Background.ID_TextField.setText("");
-			Login_Background.PW_TextField.setText("");
+			Login_Background.ID_TextField.setText("");// id 값 초기화
+			Login_Background.PW_TextField.setText("");// pw 값 
 			System.out.println("ID PASS 일치");
 			String awnser = Default_Frame.inData.readUTF();
 			if (awnser.equals("LoginAccept")) { // 로그인 성공
