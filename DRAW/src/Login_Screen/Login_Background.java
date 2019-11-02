@@ -24,6 +24,7 @@ import Select_Screen.Select_Background;
 import Util.AccessServer;
 
 public class Login_Background extends JPanel{
+	// 로그인 화면을 나타내는 클래스
 	private Image Log_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_SCREEN.png")).getImage();
 	private ImageIcon LOGIN_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_BACK.png"));
 	private ImageIcon LOGIN_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_BACK_ENTER.png"));
@@ -45,9 +46,9 @@ public class Login_Background extends JPanel{
 		add(LBB);
 		add(ID_TextField);
 		add(PW_TextField);
-		ID_TextField.setBounds(880, 380, 400, 100);
-		ID_TextField.setBorder(null);
-		ID_TextField.setFont(new Font("Stencil",Font.HANGING_BASELINE,50));
+		ID_TextField.setBounds(880, 380, 400, 100); // 아이디적는 텍스트 필드 생성
+		ID_TextField.setBorder(null); // 택스트 필드 투명화
+		ID_TextField.setFont(new Font("Stencil",Font.HANGING_BASELINE,50)); // 폰트 지정 
 		ID_TextField.setOpaque(false);
 		PW_TextField.setBounds(880, 615, 400, 100);
 		PW_TextField.setBorder(null);
