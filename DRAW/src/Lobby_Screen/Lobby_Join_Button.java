@@ -11,7 +11,7 @@ import Main_Screen.Main_Background;
 import Room_Screen.Room_Background;
 
 public class Lobby_Join_Button extends Default_Button_Event{
-
+	// ë¡œë¹„ì—ì„œ ë°©ëª©ë¡ì„ ëˆŒëŸ¬ ë“¤ì–´ê°€ëŠ” ë²„íŠ¼ 
 	private ImageIcon LOBBY_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_JOIN.png"));
 	private ImageIcon LOBBY_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_JOIN_ENTER.png"));
 	private Default_Frame DF;
@@ -28,20 +28,20 @@ public class Lobby_Join_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOBBY_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(LOBBY_ENTER);//í°ìƒ‰ìœ¼ë¡œ ë°”ë€œ
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// ì»¤ì„œê°€ ì†ê°€ë½ ëª¨ì–‘ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOBBY_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(LOBBY_IN);// ë‹¤ì‹œ ì›ìƒíƒœë¡œ
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// ì»¤ì„œê°€ ê¸°ë³¸ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		DF.getContentPane().removeAll();
-		DF.add(new Room_Background(DF));//Select_Background ÆĞ³Î ºÒ·¯¿È 
+		DF.add(new Room_Background(DF));//Select_Background íŒ¨ë„ ë¶ˆëŸ¬ì˜´ 
 		DF.revalidate();
 	}
 }
