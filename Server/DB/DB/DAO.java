@@ -8,17 +8,20 @@ public class DAO{
 	PreparedStatement pstmt;//sql 명령에 사용되는 객체
 	ResultSet rs;//명령문세팅에 사용되는 객체
 	 String name;
-	public DAO() {//객체 생성시, 접속을 시도함
+	public DAO() {
+		//  객체 생성시, 접속을 시도함
 		con = getConn();
 	}
-	public static class Singleton { //인스턴스를 하나만 만들겠다는 생각에 추가됨 덕분에 static를 도배 안해도됨 
+	public static class Singleton { 
+		//  인스턴스를 하나만 만들겠다는 생각에 추가됨 덕분에 static를 도배 안해도됨 
 		private static final DAO instance = new DAO();
 	}
 	public static DAO getInstance() {
 		return Singleton.instance;
 	}
-	//db연결시도메서드
+	
 	public Connection getConn() {
+		//  db연결시도메서드
 		try {
 			Class.forName(driver);//보통 드라이버의 종류를 적게된다
 		} catch (ClassNotFoundException e) {// 주로 이것은 오타가 나거나 라이브러리 미설치시 발생함
@@ -36,9 +39,9 @@ public class DAO{
 
 		return con;
 	}
-	//삽입 메서드 , 친구 추가가 디폴트 , 이후 방테이블추가 메서드등등으로 오버라이딩 해서 사용 가능
+	
 	public boolean insert(String id, String nickName , String tbName) {
-
+		//  삽입 메서드 , 친구 추가가 디폴트 , 이후 방테이블추가 메서드등등으로 오버라이딩 해서 사용 가능
 		boolean ok = false;
 		Connection con = null; 
 		PreparedStatement ps = null;
@@ -66,9 +69,9 @@ public class DAO{
 		}
 
 		return ok;
-	}// select와 같은 메서드 , 로그인기능이 디폴트임 , 오버라이딩 사용가능
+	}
 	public boolean search(String id, String pwd , String tbName) {
-
+		//  select와 같은 메서드 , 로그인기능이 디폴트임 , 오버라이딩 사용가능
 		boolean ok = false;
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -95,9 +98,9 @@ public class DAO{
 		}
 		return ok;
 	}
-	//행삭제 메서드 ,친구 목록 삭제가 디폴트, 오버라이딩으로 사용 가능
+	
 	public boolean delete(String id, String name , String tbName) {
-
+		//  행삭제 메서드 ,친구 목록 삭제가 디폴트, 오버라이딩으로 사용 가능
 		boolean ok = false;
 		Connection con = null; 
 		PreparedStatement ps = null;
@@ -123,5 +126,5 @@ public class DAO{
 		}
 
 		return ok;
-	}// select와 같은 메서드 , 유저 찾는 기능이 디폴트임
+	}
 }
