@@ -21,18 +21,18 @@ public class Create_Back_Button extends Default_Button_Event{
 		setBorderPainted(false);
 		setFocusable(false);
 		setContentAreaFilled(false);
-		setBounds(722,570, icon.getIconWidth(), icon.getIconHeight());
+		setBounds(744,580, icon.getIconWidth(), icon.getIconHeight());
 		addMouseListener(this);
 	}
 	public void mouseEntered(MouseEvent e) {
-		setIcon(CREATE_BACK_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ð¾çÀ¸·Î
+		setIcon(CREATE_BACK_ENTER);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(CREATE_BACK_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(CREATE_BACK_IN);// ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override

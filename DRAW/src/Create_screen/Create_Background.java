@@ -14,7 +14,7 @@ import Main_Screen.Main_Background;
 
 public class Create_Background extends JPanel{
 	private Image Create_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_SCREEN.png")).getImage();
-	private ImageIcon LOBBY_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_IN.png"));
+	private ImageIcon CREATE_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_IN.png"));
 	private ImageIcon CREATE_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_IN.png"));
 	public static JTextField CREATE_TextField = new JTextField();
 	private Default_Frame DF;
@@ -26,7 +26,7 @@ public class Create_Background extends JPanel{
 		this.DF = DF;
 		setLayout(null);
 		setBounds(100,200,1137, 663);
-		CBB = new Create_Back_Button(LOBBY_BACK, LB);
+		CBB = new Create_Back_Button(CREATE_BACK, LB);
 		CB = new Create_Button(CREATE_IN, DF);
 		CREATE_TextField.setBounds(75, 280, 970, 100);
 		CREATE_TextField.setBorder(null);
