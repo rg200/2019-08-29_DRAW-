@@ -12,6 +12,7 @@ import Main_Screen.Main_Background;
 import Select_Screen.Select_Background;
 
 public class Login_Back_Button extends Default_Button_Event{
+	// 로그인 창에서 셀렉 화면으로 보내는 버튼 
 	private ImageIcon LOGIN_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_BACK.png"));
 	private ImageIcon LOGIN_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOGIN_SCREEN/LOGIN_BACK_ENTER.png"));
 	private Default_Frame DF;
@@ -27,14 +28,14 @@ public class Login_Back_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(LOGIN_BACK_ENTER);//������� �ٲ�
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ŀ���� �հ��� �������
+		setIcon(LOGIN_BACK_ENTER);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(LOGIN_BACK);// �ٽ� �����·�
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ŀ���� �⺻����
+		setIcon(LOGIN_BACK);
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class Login_Back_Button extends Default_Button_Event{
 			e1.printStackTrace();
 		}
 		DF.getContentPane().removeAll();
-		DF.add(new Select_Background(DF));//Select_Background �г� �ҷ��� 
+		DF.add(new Select_Background(DF));//Select_Background 
 		DF.revalidate();
 	}
 }
