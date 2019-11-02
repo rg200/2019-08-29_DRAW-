@@ -10,6 +10,7 @@ import Default.Default_Frame;
 import Main_Screen.Main_Background;
 
 public class Lobby_Create_Buttonn extends Default_Button_Event{
+	// ë¡œë¹„ì—ì„œ ë°©ë§Œë“œëŠ” í™”ë©´ì„ ë„ìš°ëŠ” ë²„íŠ¼ 
 	private ImageIcon CREATE = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_CREATE_BUTTON.png"));
 	private ImageIcon CREATE_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_CREATE_BUTTON_ENTER.png"));
 	private Lobby_Background LB;
@@ -27,14 +28,14 @@ public class Lobby_Create_Buttonn extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(CREATE_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(CREATE_ENTER);//í°ìƒ‰ìœ¼ë¡œ ë°”ë€œ
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// ì»¤ì„œê°€ ì†ê°€ë½ ëª¨ì–‘ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(CREATE);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(CREATE);// ë‹¤ì‹œ ì›ìƒíƒœë¡œ
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// ì»¤ì„œê°€ ê¸°ë³¸ìœ¼ë¡œ
 	}
 
 	@Override
