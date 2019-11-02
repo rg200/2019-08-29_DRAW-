@@ -16,7 +16,7 @@ import Main_Screen.Main_Background;
 import Select_Screen.Select_Background;
 
 public class Setting_Background extends JPanel {
-	
+	// 셋팅 화면을 나타내는 패널 
 	private Image Set_Background = new ImageIcon(Main_Background.class.getResource("/Image/SETTING_SCREEN/SETTING_SCREEN.png")).getImage();
 	private ImageIcon SETTING_BACK = new ImageIcon(Main_Background.class.getResource("/Image/SETTING_SCREEN/SETTING_BACK.png"));
 	private ImageIcon SETTING_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/SETTING_SCREEN/SETTING_BACK_ENTER.png"));
@@ -25,7 +25,7 @@ public class Setting_Background extends JPanel {
 	
 	public Setting_Background(Default_Frame DF) {
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// Å©±â °íÁ¤
 		setLayout(null); 
 		SBB = new Setting_Back_Button(SETTING_BACK, DF);
 		add(SBB);
