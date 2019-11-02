@@ -16,7 +16,7 @@ import Setting_Screen.Setting_Background;
 import Signup_Screen.Signup_Background;
 
 public class Select_Background extends JPanel {
-
+	// 메인화면 다음의 로그인, 회원가입, 설정 선택할수 있는 화면의 패널
 	private Image Sel_Background = new ImageIcon(Main_Background.class.getResource("/Image/SELECT_SCREEN/SELECT_BACKGROUND.png")).getImage();
 	private ImageIcon LOGIN_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/SELECT_SCREEN/LOGIN_ENTER.png"));
 	private ImageIcon LOGIN_IN = new ImageIcon(Main_Background.class.getResource("/Image/SELECT_SCREEN/LOGIN_IN.png"));
@@ -34,14 +34,14 @@ public class Select_Background extends JPanel {
 	public Select_Background(Default_Frame DF) {
 		this.DF = DF;
 		
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// Å©±â °íÁ¤
 		setLayout(null);
 		SLB = new Select_Login_Button(LOGIN_IN, DF);
 		SSB = new Select_Setting_Button(SETTING_IN, DF);
 		SSiB = new Select_Signup_Button(SIGNUP_IN, DF);
-		add(SLB);
-		add(SSB);
-		add(SSiB);		
+		add(SLB); // 로그인으로 가는 버튼 추가
+		add(SSB); // 셋팅으로 가는 버튼 추가
+		add(SSiB);  // 회원가입 가는 버튼 추가
 		setVisible(true);
 		
 	}
