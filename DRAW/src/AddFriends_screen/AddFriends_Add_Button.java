@@ -10,6 +10,7 @@ import Default.Default_Frame;
 import Main_Screen.Main_Background;
 
 public class AddFriends_Add_Button extends Default_Button_Event{
+	//ì¹œêµ¬ ì¶”ê°€ í™”ë©´ì—ì„œ ì¹œêµ¬ ì¶”ê°€ë¥¼ ë‹´ë‹¹í•˜ëŠ” ë²„íŠ¼ 
 	private ImageIcon ADD_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/FRIENDS/FRIENDS_ADD_BUTTON_IN.png"));
 	private ImageIcon ADD_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/FRIENDS/FRIENDS_ADD_BUTTON_ENTER.png"));
 	private Default_Frame DF;
@@ -24,14 +25,14 @@ public class AddFriends_Add_Button extends Default_Button_Event{
 		addMouseListener(this);	
 	}
 	public void mouseEntered(MouseEvent e) {
-		setIcon(ADD_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(ADD_ENTER);//í°ìƒ‰ìœ¼ë¡œ ë°”ë€œ
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// ì»¤ì„œê°€ ì†ê°€ë½ ëª¨ì–‘ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(ADD_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(ADD_IN);// ë‹¤ì‹œ ì›ìƒíƒœë¡œ
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// ì»¤ì„œê°€ ê¸°ë³¸ìœ¼ë¡œ
 	}
 
 	@Override
