@@ -13,6 +13,7 @@ import Lobby_Screen.Lobby_Background;
 import Main_Screen.Main_Background;
 
 public class Create_Background extends JPanel{
+	// 방생성  화면을 나타내는 패널 
 	private Image Create_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_SCREEN.png")).getImage();
 	private ImageIcon CREATE_BACK = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_BACK_BUTTON_IN.png"));
 	private ImageIcon CREATE_IN = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/CREATE/CREATE_CREATE_BUTTON_IN.png"));
