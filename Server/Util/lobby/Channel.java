@@ -36,6 +36,9 @@ public class Channel {
 	public static Map<Integer, Room> getRooms(int channel) {
 		return Channels.get(channel);
 	}
+	public static int getRoomsSize(int channel) {
+		return Channels.get(channel).size();
+	}
 	
 	public static Room getRoom(int channel, int room) {
 		return Channels.get(channel).get(room);

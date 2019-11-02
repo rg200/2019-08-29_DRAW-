@@ -11,8 +11,7 @@ import lobby.Channel;
 
 public class RoomInfo implements Runnable {
 //	소켓이 필요할 수 있어서 일단 받아옴
-	private DataInputStream request;
-// 	Receive에 필요함
+	private DataInputStream request;// 	Receive에 필요함
 	private DataOutputStream response;
 	private GameCharacter user;
 	private int channel;
@@ -57,8 +56,18 @@ public class RoomInfo implements Runnable {
 	public void createRoom() {
 	//	방 생성
 		String roomName = Receive.ReceiveData(request);
+		int roomSize = Channel.getRoomsSize(user.getChannelNumber());
 		Channel.getRoom(channel,user.getRoomNumber()).removeUser(user);
-		Channel.getRooms(channel).put(Room.roomNum++, new Room(roomName, user));
+		if(roomSize == Room.roomNum)
+			Channel.getRooms(channel).put(Room.roomNum++, new Room(roomName, user));
+		else
+			for (int i = 1; i < Room.roomNum; i++) {
+				if(Channel.getRoom(user.getChannelNumber(),i) == null) {
+					Channel.getRooms(channel).put(i, new Room(roomName, user));
+					break;
+				}
+				
+			}
 	}
 	
 	public void joinRoom(int roomNum) {
@@ -71,20 +80,23 @@ public class RoomInfo implements Runnable {
 	//	방 새로고침
 		
 		int roomNum = Channel.getRooms(channel).size();
-
+		System.out.println("실행됨");
 		for(int i = 1; i < roomNum; i++) {
-			
-			Send.sendData(response, Channel.getRoom(channel,i).getRoomNumber());
-			Send.sendData(response, Channel.getRoom(channel,i).getRoomName());
+			System.out.println(Channel.getRoom(channel, i) +"="+i);
+			if(Channel.getRoom(channel, i) != null) {
+				
+				Send.sendData(response, Channel.getRoom(channel,i).getRoomNumber());
+				Send.sendData(response, Channel.getRoom(channel,i).getRoomName());
+			}
 		}
 	}
 	
 	public void removeRoom() {
 		
-		int beforeRoomNum = user.getRoomNumber;
+		int beforeRoomNum = user.getRoomNumber();
 		
 		if(!Channel.getRoom(channel,user.getRoomNumber()).getRoomName().equals("lobby")) {
-			Channel.getRoom(channel,user.getRoomNumber()).backUser(user)
+			Channel.getRoom(channel,user.getRoomNumber()).backUser(user);
 		
 			if(Channel.getRoom(channel,beforeRoomNum).getRoomSize() == 0){
 				Channel.getRooms(channel).remove(beforeRoomNum);       

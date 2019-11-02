@@ -22,8 +22,7 @@ public class Character{
 		this.chat = chat;
 		this.roomInfo = roomInfo;
 		this.channelNumber = channelNumber;
-		this.roomNumber = 0;
-		// 최초 유저는 방번호 0인 로비에 접속하게 된다.
+		this.roomNumber = 0; // 최초 유저는 방번호 0인 로비에 접속하게 된다.
 	}
 	
 	public String getNickName() {
