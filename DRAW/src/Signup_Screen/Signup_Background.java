@@ -14,6 +14,7 @@ import Main_Screen.Main_Background;
 import Select_Screen.Select_Background;
 
 public class Signup_Background extends JPanel{
+	// 회원가입 화면을 나타내는 클래스 
 	private Image Sig_Background = new ImageIcon(Main_Background.class.getResource("/Image/SIGNUP_SCREEN/SIGNUP_SCREEN.png")).getImage();
 	private ImageIcon SIGNUP_BACK = new ImageIcon(Main_Background.class.getResource("/Image/SIGNUP_SCREEN/SIGNUP_BACK.png"));
 	private ImageIcon SIGNUP_BACK_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/SIGNUP_SCREEN/SIGNUP_BACK_ENTER.png"));
@@ -28,7 +29,7 @@ public class Signup_Background extends JPanel{
 	public Signup_Background(Default_Frame DF) {
 
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// Å©±â °íÁ¤
 		setLayout(null);
 		SBB = new Signup_Back_Button(SIGNUP_BACK,DF);
 		SB = new Signup_Button(SIGNUP_IN, DF);
