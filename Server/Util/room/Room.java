@@ -31,11 +31,9 @@ public class Room  {
 		Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()).getArrayList().remove(user);
 	}
 	
-	public int backUser(GameCharacter user) {
+	public void backUser(GameCharacter user) {
 		removeUser(user);
-		Channel.getRoom(user.getChannelNumber(), 0).addUser(user);
-		
-		return users.size();
+		Channel.getRoom(user.getChannelNumber(), 0).addUser(user);	
 	}
 	
 	public int getRoomSize() {
