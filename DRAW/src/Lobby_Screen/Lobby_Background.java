@@ -25,6 +25,7 @@ import Main_Screen.Main_Background;
 import Room_Screen.Room_Background;
 
 public class Lobby_Background extends JPanel {
+	// 로비 화면을 그려주는 패널 
 	public static boolean Select = false;
 	public static boolean Select1 = false;
 	private Image Lob_Background = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_SCREEN.png")).getImage();
@@ -47,7 +48,7 @@ public class Lobby_Background extends JPanel {
 	
 	public Lobby_Background(Default_Frame DF) {
 		this.DF = DF;
-		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);// ũ�� ����
+		setSize(Default_Frame.SCREEN_WIDTH, Default_Frame.SCREEN_HEIGHT);
 		setLayout(null); 
 		LBB = new Lobby_Back_Button(LOBBY_BACK, DF);
 		LJB = new Lobby_Join_Button(LOBBY_IN, DF);
@@ -59,8 +60,8 @@ public class Lobby_Background extends JPanel {
 		LC = new Lobby_Chat();
 		PL = new Play_List();
 		
-		add(LJB);	// join ��ư �߰� 
-		add(LBB);	// back ��ư 	
+		add(LJB);	
+		add(LBB);		
 		add(LAB);
 		add(AB);
 		add(CB);
@@ -76,15 +77,18 @@ public class Lobby_Background extends JPanel {
 	}
 	
 	public static void AddfriendsSetvisible() {
+		// 친구추가 화면의 출력 상태를 바꿔주는 메소드
 		Select = !Select;
 		AB.setVisible(Select);
 	}
 	public static void CreateSetvisible() {
+		// 방생성 화면의 출력 상태를 바꿔주는 메소드 
 		Select1 = !Select1;
 		CB.setVisible(Select1);
 	}
 
 	public static void AddPlaylistButton(String roomName, int roomNum, Default_Frame DF) {
+		// 방 목록을 만들어 주는 메소드 
 		PL.add(new PlayList_Button(roomName,roomNum,DF));
 		PL.revalidate();
 	}
