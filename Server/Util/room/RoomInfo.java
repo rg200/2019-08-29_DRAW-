@@ -80,8 +80,15 @@ public class RoomInfo implements Runnable {
 	}
 	
 	public void removeRoom() {
-		if(!Channel.getRoom(channel,user.getRoomNumber()).getRoomName().equals("lobby") && Channel.getRoom(channel,user.getRoomNumber()).backUser(user) == 0) {
-			Channel.getRooms(channel).remove(user.getRoomNumber());
+		
+		int beforeRoomNum = user.getRoomNumber;
+		
+		if(!Channel.getRoom(channel,user.getRoomNumber()).getRoomName().equals("lobby")) {
+			Channel.getRoom(channel,user.getRoomNumber()).backUser(user)
+		
+			if(Channel.getRoom(channel,beforeRoomNum).getRoomSize() == 0){
+				Channel.getRooms(channel).remove(beforeRoomNum);       
+			}
 		}
 	}
 }
