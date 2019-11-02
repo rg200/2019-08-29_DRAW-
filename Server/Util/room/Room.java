@@ -34,7 +34,6 @@ public class Room  {
 	public int backUser(GameCharacter user) {
 		removeUser(user);
 		Channel.getRoom(user.getChannelNumber(), 0).addUser(user);
-		user.setRoomNumber(0);
 		
 		return users.size();
 	}
