@@ -14,6 +14,7 @@ import Main_Screen.Main_Background;
 import Select_Screen.Select_Background;
 
 public class Lobby_AddFriends_Button extends Default_Button_Event{
+	// ë¡œë¹„ í™”ë©´ì— ìˆëŠ” ì¹œêµ¬ ì¶”ê°€ ë²„íŠ¼ì„ ë‚˜íƒ€ë‚´ëŠ” í´ë˜ìŠ¤ 
 	private ImageIcon ADDFREIDNS = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_ADDFRIENDS.png"));
 	private ImageIcon ADDFREIDNS_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/LOBBY_SCREEN/LOBBY_ADDFRIENDS_ENTER.png"));
 	private Lobby_Background LB;
@@ -32,18 +33,19 @@ public class Lobby_AddFriends_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(ADDFREIDNS_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(ADDFREIDNS_ENTER);//í°ìƒ‰ìœ¼ë¡œ ë°”ë€œ
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// ì»¤ì„œê°€ ì†ê°€ë½ ëª¨ì–‘ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(ADDFREIDNS);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(ADDFREIDNS);// ë‹¤ì‹œ ì›ìƒíƒœë¡œ
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// ì»¤ì„œê°€ ê¸°ë³¸ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+	// ë¡œë¹„í™”ë©´ì— ìˆëŠ” ì¹œêµ¬ì¶”ê°€ íŒ¨ë„ ì¶œë ¥ì„ ì‹œí‚¤ëŠ”  
 		Lobby_Background.AddfriendsSetvisible();
 	}
 }
