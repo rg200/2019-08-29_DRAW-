@@ -11,6 +11,7 @@ import Main_Screen.Main_Background;
 import Setting_Screen.Setting_Background;
 
 public class Select_Setting_Button extends Default_Button_Event{
+	// ì…€ë ‰í™”ë©´ì—ì„œ ì…‹íŒ…í™”ë©´ìœ¼ë¡œ ê°€ê²Œí•˜ëŠ” 
 	private ImageIcon SETTING_ENTER = new ImageIcon(Main_Background.class.getResource("/Image/SELECT_SCREEN/SETTING_ENTER.png"));
 	private ImageIcon SETTING_IN = new ImageIcon(Main_Background.class.getResource("/Image/SELECT_SCREEN/SETTING_IN.png"));
 	private Default_Frame DF;
@@ -27,20 +28,20 @@ public class Select_Setting_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(SETTING_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ğ¾çÀ¸·Î
+		setIcon(SETTING_ENTER);//í°ìƒ‰ìœ¼ë¡œ ë°”ë€œ
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// ì»¤ì„œê°€ ì†ê°€ë½ ëª¨ì–‘ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(SETTING_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(SETTING_IN);// ë‹¤ì‹œ ì›ìƒíƒœë¡œ
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// ì»¤ì„œê°€ ê¸°ë³¸ìœ¼ë¡œ
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		DF.getContentPane().removeAll();
-		DF.add(new Setting_Background(DF));//Select_Background ÆĞ³Î ºÒ·¯¿È 
+		DF.add(new Setting_Background(DF));//Select_Background íŒ¨ë„ ë¶ˆëŸ¬ì˜´ 
 		DF.revalidate();
 	}
 }
