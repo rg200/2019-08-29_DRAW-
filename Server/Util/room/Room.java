@@ -28,8 +28,8 @@ public class Room  {
 	}
 	
 	public void removeUser(GameCharacter user) {
-			Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()).getArrayList().remove(user);
-		}
+		Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()).getArrayList().remove(user);
+	}
 	
 	public int backUser(GameCharacter user) {
 		removeUser(user);
