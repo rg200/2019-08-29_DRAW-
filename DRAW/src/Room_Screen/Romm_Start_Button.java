@@ -27,20 +27,20 @@ public class Romm_Start_Button extends Default_Button_Event{
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		setIcon(ROOM_ENTER);//Èò»öÀ¸·Î ¹Ù²ñ
-		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿¼­°¡ ¼Õ°¡¶ô ¸ð¾çÀ¸·Î
+		setIcon(ROOM_ENTER);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
+		setCursor(new Cursor(Cursor.HAND_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		setIcon(ROOM_IN);// ´Ù½Ã ¿ø»óÅÂ·Î
-		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿¼­°¡ ±âº»À¸·Î
+		setIcon(ROOM_IN);// ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		DF.getContentPane().removeAll();
-		DF.add(new GameBaord_Background(DF));//Select_Background ÆÐ³Î ºÒ·¯¿È 
+		DF.add(new GameBaord_Background(DF));//Select_Background ï¿½Ð³ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ 
 		DF.revalidate();
 	}
 }

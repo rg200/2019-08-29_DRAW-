@@ -51,7 +51,7 @@ public class Create_Button extends Default_Button_Event{
 		Create_Background.CREATE_TextField.setText("");
 		DF.getContentPane().removeAll();
 		DF.add(new Room_Background(DF));
-		DF.repaint();
+		DF.revalidate();
 		
 	}
 }
