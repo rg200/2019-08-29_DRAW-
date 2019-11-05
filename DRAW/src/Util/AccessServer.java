@@ -31,7 +31,7 @@ public class AccessServer {
 			Default_Socket.setChat(new Socket(InetAddress.getByName("127.0.0.1"), 9001));
 			Default_Socket.setOutChat(new DataOutputStream(Default_Socket.getChat().getOutputStream()));
 			Default_Socket.setInChat(new DataInputStream(Default_Socket.getChat().getInputStream())); 
-			System.out.println("실행됨");
+
 		} catch (UnknownHostException e) {
 			System.out.println("여기 실행됨");
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class AccessServer {
 			Default_Socket.setRoomInfo(new Socket(InetAddress.getByName("127.0.0.1"), 9002));
 			Default_Socket.setOutRoomInfo(new DataOutputStream(Default_Socket.getRoomInfo().getOutputStream()));
 			Default_Socket.setInRoomInfo(new DataInputStream(Default_Socket.getRoomInfo().getInputStream())); 
-			System.out.println("실행됨");
+
 		} catch (UnknownHostException e) {
 			System.out.println("여기 실행됨");
 			e.printStackTrace();

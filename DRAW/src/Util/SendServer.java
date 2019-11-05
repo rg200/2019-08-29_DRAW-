@@ -7,7 +7,7 @@ public class SendServer {
 	public static void SendData(DataOutputStream out, String data) {
 		try {
 			out.writeUTF(data);
-			System.out.println("ภüผÛวิ");
+
 		} catch (IOException e) {
 
 			e.printStackTrace();

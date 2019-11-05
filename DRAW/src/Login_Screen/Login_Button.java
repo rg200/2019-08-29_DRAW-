@@ -54,11 +54,12 @@ public class Login_Button extends Default_Button_Event {
 			System.out.println("ID PASS 일치");
 			String awnser = Default_Socket.getInData().readUTF();
 			if (awnser.equals("LoginAccept")) { // 로그인 성공
+
+				AccessServer.AccessRoomChat();
 				DF.getContentPane().removeAll();
 				DF.add(new Lobby_Background(DF));
 				DF.revalidate();
 				
-				AccessServer.AccessRoomChat();
 				Util.ChatThread CT = new Util.ChatThread();
 				Lobby_RoomInfo LR = new Lobby_RoomInfo(DF);
 			} else
