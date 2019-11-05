@@ -21,6 +21,7 @@ public class Lobby_RoomInfo implements Runnable{
 			String roomName = ReceiveServer.ReceiveData(Default_Socket.getInRoomInfo());
 			if(roomName.equals("Logout")) 
 				break;
+			
 			else 
 				Lobby_Background.AddPlaylistButton(roomName,roomNum,DF);
 			

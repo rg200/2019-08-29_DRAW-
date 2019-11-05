@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import AddFriends_screen.AddFriends_Background;
 import Create_screen.Create_Background;
 import Create_screen.PlayList_Button;
-import Create_screen.PlayerList_screen;
+import Create_screen.User_List;
 import Default.Default_Frame;
 import Default.Default_ScrollBar_UI;
 import Login_Screen.Login_Background;
@@ -76,7 +76,7 @@ public class Lobby_Background extends JPanel {
 		
 		CB.setVisible(false);
 		AB.setVisible(false);
-		
+		Util.UserInfo.getUserInfo();
 		
 	}
 	
@@ -91,6 +91,10 @@ public class Lobby_Background extends JPanel {
 		CB.setVisible(Select1);
 	}
 
+	public static void AddUserlistButton(String userName) {
+		PLS.add(new User_List(userName));
+	}
+	
 	public static void AddPlaylistButton(String roomName, int roomNum, Default_Frame DF) {
 		// 방 목록을 만들어 주는 메소드 
 		PL.add(new PlayList_Button(roomName,roomNum,DF));
