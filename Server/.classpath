@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Util"/>
 	<classpathentry kind="src" path="DB"/>
+	<classpathentry kind="lib" path="E:/학기 폴더/2학기/자바프로그래밍/자바aws/자바 db/mariadb-java-client-2.4.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

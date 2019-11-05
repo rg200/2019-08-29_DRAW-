@@ -12,6 +12,8 @@ import common.Option;
 import common.Receive;
 import common.Send;
 import room.Room;
+import DB.*;
+import DB.DAO.STDAO;
 
 public class Chat implements Runnable {
 	private GameCharacter user;
@@ -53,15 +55,15 @@ public class Chat implements Runnable {
 				System.out.println(words[1]);
 				try {
 				for (GameCharacter target : user_room_cli) {
-					if(target.getNickName().equals(words[0])) {
+					if(target.getNickName().equals(words[0]) && STDAO.getInstance().getUserstate("TB_STATE", words[0])>0&&
+							STDAO.getInstance().getUserstate("TB_STATE", words[0])>2) {
 						Send.sendData(target.getChatOut(),"SYSW "+user.getNickName()+"님으로 부터 받은 메세지 : "+words[1]);
 						Send.sendData(user.getChatOut(),"SYSW "+ user.getNickName()+"님이 보낸 메세지 : "+words[1]);
 						Suc =  true; // 귓속말 성공
-						
 					}
 				}
-				
-					if(Suc = false) // 귓속말 실패시
+				System.out.println(Suc);
+					if(Suc == false) // 귓속말 실패시
 						Send.sendData(user.getChatOut(),"SYSW " +words[0]+"의 닉네임을 가진 유저가 없습니다.");
 					else // 귓속말 성공시 초기화
 						Suc = false;

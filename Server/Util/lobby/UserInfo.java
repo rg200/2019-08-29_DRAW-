@@ -8,6 +8,8 @@ import common.Disconnect_User;
 import common.Receive;
 import common.Send;
 import login.Login;
+import DB.*;
+import DB.DAO.STDAO;
 
 public class UserInfo implements Runnable {
 	private GameCharacter user;
@@ -29,6 +31,7 @@ public class UserInfo implements Runnable {
 				if(UserInfoData.equals("Logout")) {
 					
 					Disconnect_User.Disconnect(user,UserInfoData);
+					STDAO.getInstance().update(user.getNickName(), "TB_STATE", 0, 0);
 					break;
 				}
 				else if(UserInfoData.equals("UserInfo")) {

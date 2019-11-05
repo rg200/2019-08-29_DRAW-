@@ -5,6 +5,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import DB.*;
+import DB.DAO.ROOMDAO;
+import DB.DAO.STDAO;
 import character.GameCharacter;
 import common.Access;
 import common.Disconnect_User;
@@ -61,9 +64,9 @@ public class Login implements Runnable {
 			else {
 			String[] words = Login_Receive_Data.split(":"); // 아이디:패스워드로 오는 문장 처리
 			System.out.println(words[0]+words[1]); //확인용 나중에 지움
-			if(words[0].equals(ID) && words[1].equals(PASS) || words[0].equals(ID2) && words[1].equals(PASS)) { // 비교
+			if(DAO.getInstance().select(words[0], words[1])) { // 비교
 				common.Send.sendData(outData, "LoginAccept");
-				
+				STDAO.getInstance().update(words[0], "TB_STATE", 1, 0);
 				channel_Select = 0;
 				//channel_Select = Receive.ReceiveInt(inData);
 				// 채널 선택
