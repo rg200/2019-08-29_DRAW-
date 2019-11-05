@@ -61,7 +61,7 @@ public class Login implements Runnable {
 			else {
 			String[] words = Login_Receive_Data.split(":"); // 아이디:패스워드로 오는 문장 처리
 			System.out.println(words[0]+words[1]); //확인용 나중에 지움
-			if(words[0].equals(ID) && words[1].equals(PASS) || words[0].equals(ID) && words[1].equals(PASS)) { // 비교
+			if(words[0].equals(ID) && words[1].equals(PASS) || words[0].equals(ID2) && words[1].equals(PASS)) { // 비교
 				common.Send.sendData(outData, "LoginAccept");
 				
 				channel_Select = 0;
