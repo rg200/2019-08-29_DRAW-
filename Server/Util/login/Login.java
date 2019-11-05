@@ -20,6 +20,7 @@ public class Login implements Runnable {
 	
 	private String Login_Receive_Data; // 로그인할 때 받아오는 데이터 저장하는 스트링
 	private String ID = "hjp"; //시험용 아이디
+	private String ID2 = "sym"; //시험용 아이디2
 	private String PASS = "1234"; // 시험용 패스워드
 	
 //	소켓이 필요할 수 있어서 일단 받아옴
@@ -60,7 +61,7 @@ public class Login implements Runnable {
 			else {
 			String[] words = Login_Receive_Data.split(":"); // 아이디:패스워드로 오는 문장 처리
 			System.out.println(words[0]+words[1]); //확인용 나중에 지움
-			if(words[0].equals(ID) && words[1].equals(PASS)) { // 비교
+			if(words[0].equals(ID) && words[1].equals(PASS) || words[0].equals(ID) && words[1].equals(PASS)) { // 비교
 				common.Send.sendData(outData, "LoginAccept");
 				
 				channel_Select = 0;
