@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
 import character.*;
 import common.Option;
 import common.Receive;
@@ -39,13 +40,39 @@ public class Chat implements Runnable {
 		common.Send.sendData(outChat, "접속하신걸 환영합니다.");
 		while(Option.Stop) {
 			ChatText = Receive.ReceiveData(inChat);
-
-			if(ChatText.startsWith("/w"));
+			user_room = Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()); // 채널과 방번호로 룸 클래스 받아옴
+			user_room_cli = user_room.getArrayList(); // 받아온 룸 클래스로 접속자 어레이 리스트를 받아옴 
+			
+			if(ChatText.startsWith("/w ")) { 
+				boolean Suc = false;
+				System.out.println("귓속말 실행");
+				// /w하고 이름을 붙여쓰는 경우 방지
+				ChatText = ChatText.substring(3);
+				String[] words = ChatText.split("\\s", 2);
+				System.out.println(words[0]);
+				System.out.println(words[1]);
+				try {
+				for (GameCharacter target : user_room_cli) {
+					if(target.getNickName().equals(words[0])) {
+						Send.sendData(target.getChatOut(),"SYSW "+user.getNickName()+"님으로 부터 받은 메세지 : "+words[1]);
+						Send.sendData(user.getChatOut(),"SYSW "+ user.getNickName()+"님이 보낸 메세지 : "+words[1]);
+						Suc =  true; // 귓속말 성공
+						
+					}
+				}
+				
+					if(Suc = false) // 귓속말 실패시
+						Send.sendData(user.getChatOut(),"SYSW " +words[0]+"의 닉네임을 가진 유저가 없습니다.");
+					else // 귓속말 성공시 초기화
+						Suc = false;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 			else if(!ChatText.equals("Error")) {
 				ChatText = user.getNickName() +" : "+ ChatText;
-				user_room = Channel.getRoom(user.getChannelNumber(), user.getRoomNumber()); // 채널과 방번호로 룸 클래스 받아옴
-				user_room_cli = user_room.getArrayList(); // 받아온 룸 클래스로 접속자 어레이 리스트를 받아옴 
-				//System.out.println(ChatText);
 				Send.sendAll(ChatText,user_room_cli);
 			}
 		}
