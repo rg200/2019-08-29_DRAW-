@@ -1,38 +1,50 @@
 package lobby;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import character.GameCharacter;
-import common.Disconnect_Socket;
-import common.Option;
+import common.Disconnect_User;
 import common.Receive;
 import common.Send;
 import login.Login;
 
 public class UserInfo implements Runnable {
-	GameCharacter user;
-	public UserInfo(GameCharacter user) {
+	private GameCharacter user;
+	private int channel;
+	private DataOutputStream outUserInfo;
+	private DataInputStream inUserInfo;
+	
+	public UserInfo(GameCharacter user) throws IOException {
 		this.user = user;
+		this.channel = user.getChannelNumber();
+		outUserInfo = user.getUserOut();
+		inUserInfo = user.getUserIn();
 	}
 	
 	public void run() {
 		while(true) {
 			try {
-
-				String UserInfoData = Receive.ReceiveData(user.getUserIn());
+				String UserInfoData = Receive.ReceiveData(inUserInfo);
 				if(UserInfoData.equals("Logout")) {
-					Send.sendData(user.getChatOut(), UserInfoData);
-					Send.sendData(user.getRoomOut(), UserInfoData);
 					
-					Disconnect_Socket.Disconnect(user.getChat());
-					Disconnect_Socket.Disconnect(user.getRoomInfo());
-
-					
-					Option.Stop = false;
+					Disconnect_User.Disconnect(user,UserInfoData);
 					break;
 				}
-				
+				else if(UserInfoData.equals("UserInfo")) {
+					
+					int roomNum = Channel.getRoom(channel, user.getRoomNumber()).getRoomSize();
+					
+					for(int i = 0; i < roomNum; i++) {			
+						Send.sendData(outUserInfo, Channel.getRoom(channel,user.getRoomNumber()).getUserName(i));
+					}
+					Send.sendData(outUserInfo, "End");
+				}
+				else if(UserInfoData.equals("Friend")) {
+					
+				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

@@ -36,6 +36,10 @@ public class Room  {
 		Channel.getRoom(user.getChannelNumber(), 0).addUser(user);	
 	}
 	
+	public String getUserName(int i) {
+		return users.get(i).getNickName();
+	}
+	
 	public int getRoomSize() {
 		return users.size();
 	}

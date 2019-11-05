@@ -15,7 +15,7 @@ public class RoomInfo implements Runnable {
 	private DataOutputStream response;
 	private GameCharacter user;
 	private int channel;
-	
+
 	public RoomInfo(GameCharacter user) {
 		//클라이언트의 유저 정보 Socket을 받아옴
 		try {

@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import character.GameCharacter;
 import common.Access;
-import common.Disconnect_Socket;
+import common.Disconnect_User;
 import common.Option;
 import common.Receive;
 import lobby.Channel;
@@ -36,9 +36,14 @@ public class Login implements Runnable {
 	}
 
 	public void makeChat_RoomInfo(GameCharacter user, int Channel) {
-		new Thread(new lobby.Chat(user)).start();
-		new Thread(new room.RoomInfo(user)).start();
-		new Thread(new UserInfo(user)).start();
+		try {
+			new Thread(new lobby.Chat(user)).start();
+			new Thread(new room.RoomInfo(user)).start();
+			new Thread(new UserInfo(user)).start();
+		} catch (IOException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+		}
 	}
 	
 	public void run() {
@@ -47,9 +52,9 @@ public class Login implements Runnable {
 			Login_Receive_Data = Receive.ReceiveData(inData);
 			if(Login_Receive_Data.startsWith("System")) {
 		
-				Disconnect_Socket.DisconnectStream(inData);
-			    Disconnect_Socket.DisconnectStream(outData);
-			    Disconnect_Socket.Disconnect(userInfo);
+				Disconnect_User.DisconnectStream(inData);
+			    Disconnect_User.DisconnectStream(outData);
+			    Disconnect_User.DisconnectSocket(userInfo);
 				break;
 			}// 로그인화면에서 뒤로가기 신호가 왔을 때
 			else {
@@ -61,10 +66,8 @@ public class Login implements Runnable {
 				channel_Select = 0;
 				//channel_Select = Receive.ReceiveInt(inData);
 				// 채널 선택
-				
 				GameCharacter user = new GameCharacter(words[0], userInfo,Access.startChat(),Access.startRoomInfo(), channel_Select); 
 				// 로그인 성공시 유저 정보를 담는 캐릭터 객체 & 채널객체 생성 
-				
 				new Channel(user, channel_Select);
 				Option.Stop = true;
 				makeChat_RoomInfo(user,channel_Select);
